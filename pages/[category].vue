@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
+import { allowedCategories } from "~/lib/config";
+
+const route = useRoute();
+const category = route.params.category as string; // Get the category from the route
+
+if (!allowedCategories.map((c) => c.value).includes(category.toLowerCase())) {
+	throw createError({
+		statusCode: 404,
+		statusMessage: "Page Not Found",
+	});
+}
 </script>
 
 <template>

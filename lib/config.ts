@@ -8,7 +8,7 @@ export const allowedCategories = [
 		value: "technology",
 	},
 	{
-		name: "AI",
+		name: "Artificial Intelligence",
 		value: "ai",
 	},
 	{
@@ -44,7 +44,3 @@ export const allowedCategories = [
 		value: "free-games",
 	},
 ];
-
-export default defineEventHandler((event) => {
-	return allowedCategories;
-});

@@ -13,6 +13,7 @@ export default (<Partial<Config>>{
 			fontFamily: {
 				sans: ["Inter", "Noto Sans TC", "sans-serif"],
 				mono: ["JetBrains Mono", "Inter", "Noto Sans TC", "monospace"],
+				console: ["Consolas", "monospace"],
 			},
 		},
 	},

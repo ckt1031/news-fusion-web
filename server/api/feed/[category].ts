@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import { XMLParser } from "fast-xml-parser";
 import { ofetch } from "ofetch";
 import { z } from "zod";
+import { allowedCategories } from "~/lib/config";
 import { AtomFeedSchema } from "~/lib/types";
-import { allowedCategories } from "~/server/api/categories";
 
 const feedURL = "https://news-fusion.tsun1031.xyz/v1/feed";
 
@@ -13,12 +13,22 @@ const querySchema = z.object({
 
 export default defineEventHandler(async (event) => {
 	const category = getRouterParam(event, "category");
-	// Get date query parameter
-	const queries = await getValidatedQuery(event, (q) => querySchema.parse(q));
 
+	// Check if category exists
 	if (!category) {
 		return {
 			error: "Category not found",
+		};
+	}
+
+	// Get date query parameter
+	const queries = await getValidatedQuery(event, (q) => querySchema.parse(q));
+	const date = queries.date ?? dayjs().format("YYYY-MM-DD");
+
+	// Verify date format
+	if (!dayjs(date).isValid()) {
+		return {
+			error: "Invalid date format",
 		};
 	}
 
@@ -46,10 +56,8 @@ export default defineEventHandler(async (event) => {
 	const data = AtomFeedSchema.parse(parser.parse(xml));
 
 	// Filter entries by date, if the article is on that date only
-	const entries = data.feed.entry.filter((entry) =>
-		queries.date
-			? new Date(entry.updated).toISOString().split("T")[0] === queries.date
-			: dayjs().format("YYYY-MM-DD"),
+	const entries = data.feed.entry.filter(
+		(entry) => new Date(entry.updated).toISOString().split("T")[0] === date,
 	);
 
 	return {

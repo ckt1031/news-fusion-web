@@ -1,10 +1,12 @@
 <script setup lang="ts">
-const { data } = await useFetch("/api/categories"); // Fetch categories from the API
+import { allowedCategories } from "~/lib/config";
 
 const route = useRoute();
 const category = route.params.category as string | null; // Get the category from the route
 
-const selectedCategory = ref<string | null>(category ?? "world"); // Set the first category as the selected category
+const selectedCategory = ref<string | null>(
+	category ?? allowedCategories[0].value,
+); // Set the first category as the selected category
 
 const router = useRouter();
 
@@ -20,7 +22,7 @@ const onChange = (value: string) => {
 <template>
   <div class="flex flex-row items-center gap-2">
     <p>Category:</p>
-    <USelect v-if="data && selectedCategory" v-model="selectedCategory" option-attribute="name" :options="data" @change="onChange"/>
+    <USelect v-if="allowedCategories && selectedCategory" v-model="selectedCategory" option-attribute="name" :options="allowedCategories" @change="onChange"/>
   </div>
 </template>
 
