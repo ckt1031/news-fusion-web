@@ -44,7 +44,7 @@ const { status, data } = useLazyFetch<AtomFeed>(`/api/feed/${category}`, {
         Total: {{ data.feed.entry.length }} articles
       </p>
       <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
-        <div v-for="item in data.feed.entry" :key="item.id" class="py-1">
+        <div v-for="item in data.feed.entry" :key="item.id" class="py-2">
           <FeedData :feed="item"/>
         </div>
       </div>

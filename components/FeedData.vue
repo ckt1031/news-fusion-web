@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import type { z } from "zod";
-import type { AtomFeedSchema } from "~/lib/types";
+import type {z} from "zod";
+import type {AtomFeedSchema} from "~/lib/types";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;
 
 const props = defineProps<{
-	feed: AtomFeed["feed"]["entry"][0];
+  feed: AtomFeed["feed"]["entry"][0];
 }>();
 
 const openContent = useState(`open-${props.feed.id}`, () => "0");
 
 const onClick = () => {
-	openContent.value = openContent.value === "0" ? "1" : "0";
+  openContent.value = openContent.value === "0" ? "1" : "0";
 };
 </script>
 
@@ -48,10 +48,6 @@ const onClick = () => {
 .markdown-style strong {
   @apply text-xl font-bold;
 }
-
-.markdown {
-  @apply font-mono text-gray-600 dark:text-gray-400 prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full;
-}
 </style>
 
 <template>
@@ -67,14 +63,16 @@ const onClick = () => {
           dayjs(props.feed.updated).format('MMMM D, YYYY')
         }}
       </p>
-      <NuxtMarkdown :source="props.feed.content" class="mt-2 markdown"/>
+      <MDC :value="props.feed.content"
+           class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"/>
       <img :src="props.feed['media:group']['media:content']['@_url']"
-           v-if="props.feed['media:group']?.['media:content']?.['@_url']" class="my-2 rounded max-h-32"
+           v-if="props.feed['media:group']?.['media:content']?.['@_url']" class="mt-4 mb-2 rounded max-h-32 md:max-h-64"
            :alt="props.feed.title"
       />
-      <div class="flex flex-row items-center gap-2">
+      <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
-        <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline" target="_blank">
+        <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1" target="_blank">
+          <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4" />
           Read more
         </a>
       </div>
