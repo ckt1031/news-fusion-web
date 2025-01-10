@@ -20,12 +20,16 @@ export default defineEventHandler(async (event) => {
     const queries = await getValidatedQuery(event, q => querySchema.parse(q))
 
     if (!category) {
-        return 'Category not found'
+        return {
+            error: 'Category not found'
+        }
     }
 
     // Check if category is allowed
     if (!allowedCategories.map(c => c.value).includes(category.toLowerCase())) {
-        return 'Category not allowed'
+        return {
+            error: 'Category not found'
+        }
     }
 
     const url = `${feedURL}/${category.toLowerCase()}`
@@ -50,6 +54,7 @@ export default defineEventHandler(async (event) => {
     )
 
     return {
+        error: null,
         // Re-order the feed with date descending
         ...data,
         feed: {

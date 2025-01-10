@@ -13,7 +13,7 @@ const router = useRouter()
 
 const onDateChange = (newDate: Date) => {
   const newQueryDate = dayjs(newDate).format('YYYY-MM-DD').toString()
-  router.push({ query: { date: newQueryDate }, force: true })
+  window.location.href = `/?date=${newQueryDate}`
 }
 </script>
 

@@ -72,9 +72,12 @@ const onClick = () => {
            v-if="props.feed['media:group']?.['media:content']?.['@_url']" class="my-2 rounded max-h-32"
            :alt="props.feed.title"
       />
-      <a :href="props.feed.id" class="mt-1 text-blue-500 dark:text-blue-400 hover:underline" target="_blank">
-        Read more
-      </a>
+      <div class="flex flex-row items-center gap-2">
+        <FeedPublisher :url="props.feed.id"/>
+        <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline" target="_blank">
+          Read more
+        </a>
+      </div>
     </div>
   </div>
 </template>

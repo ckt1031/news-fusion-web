@@ -8,5 +8,13 @@ export default defineNuxtConfig({
     },
     ui: {
         global: true
+    },
+    routeRules: {
+        '/': {
+            swr: 60
+        },
+        '/[category]': {
+            swr: 60
+        }
     }
 })
