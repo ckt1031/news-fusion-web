@@ -12,6 +12,10 @@ export const allowedCategories = [
 		value: "ai",
 	},
 	{
+		name: "Hong Kong",
+		value: "hong-kong",
+	},
+	{
 		name: "Finance",
 		value: "finance",
 	},
@@ -20,8 +24,24 @@ export const allowedCategories = [
 		value: "investing",
 	},
 	{
-		name: "Dev",
+		name: "Developer",
 		value: "dev",
+	},
+	{
+		name: "Hacker News",
+		value: "hacker-news",
+	},
+	{
+		name: "Lobste.rs",
+		value: "lobste-rs",
+	},
+	{
+		name: "V2EX",
+		value: "v2ex",
+	},
+	{
+		name: "Free Games",
+		value: "free-games",
 	},
 ];
 

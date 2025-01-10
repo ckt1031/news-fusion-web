@@ -8,7 +8,7 @@ import { allowedCategories } from "~/server/api/categories";
 const feedURL = "https://news-fusion.tsun1031.xyz/v1/feed";
 
 const querySchema = z.object({
-	date: z.string().default(dayjs().format("YYYY-MM-DD")),
+	date: z.string().optional(),
 });
 
 export default defineEventHandler(async (event) => {
@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
 	const entries = data.feed.entry.filter((entry) =>
 		queries.date
 			? new Date(entry.updated).toISOString().split("T")[0] === queries.date
-			: true,
+			: dayjs().format("YYYY-MM-DD"),
 	);
 
 	return {
