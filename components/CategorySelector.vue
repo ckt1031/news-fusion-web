@@ -20,7 +20,7 @@ const onChange = (value: string) => {
 <template>
   <div class="flex flex-row items-center gap-2">
     <p>Category:</p>
-    <USelect v-if="data && selectedCategory" v-model="selectedCategory" :options="data" @change="onChange"/>
+    <USelect v-if="data && selectedCategory" v-model="selectedCategory" option-attribute="name" :options="data" @change="onChange"/>
   </div>
 </template>
 

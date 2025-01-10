@@ -17,7 +17,41 @@ const onClick = () => {
 </script>
 
 <style scoped>
+.markdown-style h1 {
+  @apply text-2xl font-bold;
+}
 
+.markdown-style h2 {
+  @apply text-xl font-bold;
+}
+
+.markdown-style h3 {
+  @apply text-lg font-bold;
+}
+
+.markdown-style h4 {
+  @apply text-base font-bold;
+}
+
+.markdown-style h5 {
+  @apply text-base font-bold;
+}
+
+.markdown-style h6 {
+  @apply font-semibold;
+}
+
+.markdown-style p {
+  @apply text-base;
+}
+
+.markdown-style strong {
+  @apply text-xl font-bold;
+}
+
+.markdown {
+  @apply font-mono text-gray-600 dark:text-gray-400 prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full;
+}
 </style>
 
 <template>
@@ -28,15 +62,17 @@ const onClick = () => {
       </span>
     </button>
     <div v-if="openContent === '1'" class="my-2">
-      <p class="text-gray-600 dark:text-gray-500">
+      <p class="text-gray-500 dark:text-gray-400">
         {{
           dayjs(props.feed.updated).format('MMMM D, YYYY')
         }}
       </p>
-      <p class="mt-2 text-gray-500 dark:text-gray-400">
-        {{ props.feed.content }}
-      </p>
-      <a :href="props.feed.id" class="mt-1 text-blue-500 dark:text-blue-400 hover:underline">
+      <NuxtMarkdown :source="props.feed.content" class="mt-2 markdown"/>
+      <img :src="props.feed['media:group']['media:content']['@_url']"
+           v-if="props.feed['media:group']?.['media:content']?.['@_url']" class="my-2 rounded max-h-32"
+           :alt="props.feed.title"
+      />
+      <a :href="props.feed.id" class="mt-1 text-blue-500 dark:text-blue-400 hover:underline" target="_blank">
         Read more
       </a>
     </div>

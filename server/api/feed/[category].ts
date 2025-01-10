@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 const feedURL = "https://news-fusion.tsun1031.xyz/v1/feed"
 
 const querySchema = z.object({
-    date: z.string().optional().default(
+    date: z.string().default(
         dayjs().format('YYYY-MM-DD'),
     ),
 })
@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Check if category is allowed
-    if (!allowedCategories.includes(category)) {
+    if (!allowedCategories.map(c => c.value).includes(category.toLowerCase())) {
         return 'Category not allowed'
     }
 
