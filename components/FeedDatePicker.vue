@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import {format} from 'date-fns'
-import dayjs from 'dayjs'
+import { format } from "date-fns";
+import dayjs from "dayjs";
 
 // Get query params
-const route = useRoute()
+const route = useRoute();
 // YYYY-MM-DD
-const queryDate = (route.query.date as string | undefined) ?? dayjs().format('YYYY-MM-DD').toString()
+const queryDate =
+	(route.query.date as string | undefined) ??
+	dayjs().format("YYYY-MM-DD").toString();
 
-const date = ref(dayjs(queryDate).toDate())
+const date = ref(dayjs(queryDate).toDate());
 
-const router = useRouter()
+const router = useRouter();
 
 const onDateChange = (newDate: Date) => {
-  const newQueryDate = dayjs(newDate).format('YYYY-MM-DD').toString()
-  window.location.href = `/?date=${newQueryDate}`
-}
+	const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
+	window.location.href = `/?date=${newQueryDate}`;
+};
 </script>
 
 <template>

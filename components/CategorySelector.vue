@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const {data} = await useFetch('/api/categories') // Fetch categories from the API
+const { data } = await useFetch("/api/categories"); // Fetch categories from the API
 
-const route = useRoute()
-const category = route.params.category as string | null // Get the category from the route
+const route = useRoute();
+const category = route.params.category as string | null; // Get the category from the route
 
-const selectedCategory = ref<string | null>(category ?? "world") // Set the first category as the selected category
+const selectedCategory = ref<string | null>(category ?? "world"); // Set the first category as the selected category
 
-const router = useRouter()
+const router = useRouter();
 
 const onChange = (value: string) => {
-  selectedCategory.value = value
-  router.push({name: 'category', params: {category: value}})
-}
+	selectedCategory.value = value;
+	router.push({ name: "category", params: { category: value } });
+};
 </script>
 
 <style scoped>

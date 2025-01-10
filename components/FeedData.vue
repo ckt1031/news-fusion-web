@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import {z} from "zod";
 import dayjs from "dayjs";
-import {AtomFeedSchema} from "~/lib/types";
+import type { z } from "zod";
+import type { AtomFeedSchema } from "~/lib/types";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;
 
 const props = defineProps<{
-  feed: AtomFeed['feed']['entry'][0]
-}>()
+	feed: AtomFeed["feed"]["entry"][0];
+}>();
 
-const openContent = useState(`open-${props.feed.id}`, () => '0')
+const openContent = useState(`open-${props.feed.id}`, () => "0");
 
 const onClick = () => {
-  openContent.value = openContent.value === '0' ? '1' : '0'
-}
+	openContent.value = openContent.value === "0" ? "1" : "0";
+};
 </script>
 
 <style scoped>
