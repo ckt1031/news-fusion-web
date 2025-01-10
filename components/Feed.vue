@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import type { z } from "zod";
-import type { AtomFeedSchema } from "~/lib/types";
+import type {z} from "zod";
+import type {AtomFeedSchema} from "~/lib/types";
 
 const route = useRoute();
 const category = route.params.category ?? "world";
 
 type Error = {
-	error: string | null;
+  error: string | null;
 };
 type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
 
-const { status, data } = useLazyFetch<AtomFeed>(`/api/feed/${category}`, {
-	query: {
-		date: route.query.date,
-	},
-});
+const {status, data} = await useLazyAsyncData<AtomFeed>('feed-data', () => $fetch(`/api/feed/${category}`, {
+  query: {
+    date: route.query.date,
+  },
+}))
 </script>
 
 <style scoped>

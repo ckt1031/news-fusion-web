@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import { format } from "date-fns";
+import {format} from "date-fns";
 import dayjs from "dayjs";
 
 // Get query params
 const route = useRoute();
 // YYYY-MM-DD
 const queryDate =
-	(route.query.date as string | undefined) ??
-	dayjs().format("YYYY-MM-DD").toString();
+    (route.query.date as string | undefined) ??
+    dayjs().format("YYYY-MM-DD").toString();
 
 const date = ref(dayjs(queryDate).toDate());
 
 const router = useRouter();
+const refresh = () => refreshNuxtData('feed-data')
 
 const onDateChange = (newDate: Date) => {
-	const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
-	window.location.href = `/?date=${newQueryDate}`;
+  const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
+  router.push({query: {date: newQueryDate}});
+  refresh();
 };
 </script>
 

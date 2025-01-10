@@ -9,10 +9,10 @@ const props = defineProps<{
   feed: AtomFeed["feed"]["entry"][0];
 }>();
 
-const openContent = useState(`open-${props.feed.id}`, () => "0");
+const openContent = useState(`open-${props.feed.id}`, () => "false");
 
 const onClick = () => {
-  openContent.value = openContent.value === "0" ? "1" : "0";
+  openContent.value = openContent.value === "true" ? "false" : "true";
 };
 </script>
 
@@ -57,7 +57,7 @@ const onClick = () => {
         {{ props.feed.title }}
       </span>
     </button>
-    <div v-if="openContent === '1'" class="my-2">
+    <div v-if="openContent === 'true'" class="my-2">
       <p class="text-gray-500 dark:text-gray-400">
         {{
           dayjs(props.feed.updated).format('MMMM D, YYYY')
@@ -71,10 +71,13 @@ const onClick = () => {
       />
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
-        <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1" target="_blank">
-          <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4" />
-          Read more
-        </a>
+        <UTooltip :text="props.feed.id.slice(0, 50)">
+          <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
+             target="_blank">
+            <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4"/>
+            Read more
+          </a>
+        </UTooltip>
       </div>
     </div>
   </div>
