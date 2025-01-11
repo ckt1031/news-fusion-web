@@ -77,7 +77,7 @@ const result = computed(() => {
           <FeedRefresh/>
         </div>
       </div>
-      <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
+      <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700" id="content">
         <div v-for="d in result" :key="d.id" class="py-2">
           <FeedData :feed="d"/>
         </div>

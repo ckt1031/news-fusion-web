@@ -5,7 +5,7 @@ defineRouteRules({
 </script>
 
 <template>
-  <div class="flex flex-col gap-3 text-gray-700 dark:text-gray-400 pt-4 mb-10">
+  <article class="flex flex-col gap-3 text-gray-700 dark:text-gray-400 pt-4 mb-10">
     <h1 class="text-2xl font-semibold mb-3 text-black dark:text-white">
       About...
     </h1>
@@ -73,7 +73,7 @@ defineRouteRules({
       Is this website free to access?
     </h2>
     <p>Currently yes, but I may consider adding a subscription model in the future.</p>
-  </div>
+  </article>
 </template>
 
 <style scoped>

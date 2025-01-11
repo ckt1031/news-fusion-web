@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
 import { allowedCategories } from "~/lib/config";
+import { onLoadImmersiveTranslate } from "~/lib/immersive-translate";
 
 defineRouteRules({
 	ssr: true,
 	prerender: false,
-	isr: 60,
-	swr: 60,
-	cache: { maxAge: 60 },
 });
 
 const route = useRoute();
@@ -19,6 +17,24 @@ if (!allowedCategories.map((c) => c.value).includes(category.toLowerCase())) {
 		statusMessage: "Page Not Found",
 	});
 }
+
+const { onLoaded } = useScript(
+	{
+		src: "https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
+		async: true,
+	},
+	{
+		use() {
+			return { initImmersiveTranslate: window.initImmersiveTranslate };
+		},
+	},
+);
+
+onMounted(() => {
+	onLoaded(({ initImmersiveTranslate }) => {
+		onLoadImmersiveTranslate(initImmersiveTranslate);
+	});
+});
 </script>
 
 <template>
