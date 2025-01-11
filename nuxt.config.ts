@@ -59,11 +59,7 @@ export default defineNuxtConfig({
 					"https://static.cloudflareinsights.com/beacon.min.js",
 					"https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
 				],
-				"connect-src": [
-					"'self'",
-					"https://translate.googleapis.com",
-					"https://edge.microsoft.com/translate/auth",
-				],
+				"connect-src": ["'self'", "https://*"],
 			},
 		},
 	},
