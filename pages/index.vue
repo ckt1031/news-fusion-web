@@ -11,6 +11,8 @@ const { onLoaded } = useScript(
 	{
 		src: "https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
 		async: true,
+		crossorigin: "anonymous",
+		referrerpolicy: "no-referrer",
 	},
 	{
 		use() {
