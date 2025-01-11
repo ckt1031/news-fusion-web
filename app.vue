@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Footer from "~/components/Footer.vue";
+
 useHead({
 	title: "News Fusion",
 	meta: [
@@ -28,6 +30,7 @@ body {
     <div class="padding-container flex flex-1 flex-col">
       <NuxtPage/>
     </div>
+    <Footer/>
   </div>
   <UNotifications />
 </template>
