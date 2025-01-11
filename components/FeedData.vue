@@ -14,6 +14,11 @@ const openContent = useState(`open-${props.feed.id}`, () => "false");
 const onClick = () => {
 	openContent.value = openContent.value === "true" ? "false" : "true";
 };
+
+const imageURL = props.feed["media:group"]?.["media:content"]?.["@_url"];
+const proxiedImageURL = imageURL
+	? `/api/image?href=${encodeURIComponent(imageURL)}`
+	: "";
 </script>
 
 <style scoped>
@@ -65,9 +70,11 @@ const onClick = () => {
       </p>
       <MDC :value="props.feed.content"
            class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"/>
-      <img :src="props.feed['media:group']['media:content']['@_url']"
-           v-if="props.feed['media:group']?.['media:content']?.['@_url']" class="mt-4 mb-2 rounded max-h-32 md:max-h-64"
-           :alt="props.feed.title"
+      <img
+          :src="proxiedImageURL"
+          v-if="props.feed['media:group']?.['media:content']?.['@_url']"
+          class="mt-4 mb-2 rounded max-h-32 md:max-h-64"
+          :alt="props.feed.title"
       />
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>

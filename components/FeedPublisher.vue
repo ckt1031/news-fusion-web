@@ -2,11 +2,11 @@
 const props = defineProps<{
 	url: string;
 }>();
-const url = `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.url}&size=256`;
+const url = `https://www.google.com/s2/favicons?domain=${props.url}&sz=64`;
 </script>
 
 <template>
-  <img :src="url" alt="favicon" class="w-4 h-4 rounded-full"/>
+  <img class="w-4 h-4" alt="favicon" :src="url"/>
 </template>
 
 <style scoped>
