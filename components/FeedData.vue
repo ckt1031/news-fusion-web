@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import type { z } from "zod";
+import FeedThumbnail from "~/components/FeedThumbnail.vue";
 import type { AtomFeedSchema } from "~/lib/types";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;
@@ -16,9 +17,6 @@ const onClick = () => {
 };
 
 const imageURL = props.feed["media:group"]?.["media:content"]?.["@_url"];
-const proxiedImageURL = imageURL
-	? `/api/image?href=${encodeURIComponent(imageURL)}`
-	: "";
 </script>
 
 <style scoped>
@@ -70,14 +68,7 @@ const proxiedImageURL = imageURL
       </p>
       <MDC :value="props.feed.content"
            class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"/>
-      <object
-          :data="imageURL"
-          type="image/jpg"
-          v-if="props.feed['media:group']?.['media:content']?.['@_url']"
-          class="mt-4 mb-2 rounded max-h-32 md:max-h-64"
-      >
-        <img :src="proxiedImageURL" class="mt-4 mb-2 rounded max-h-32 md:max-h-64" :alt="props.feed.title"/>
-      </object>
+      <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
         <UTooltip :text="props.feed.id.slice(0, 50)">
