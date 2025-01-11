@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Fuse from "fuse.js";
 import type { z } from "zod";
 import type { AtomFeedSchema } from "~/lib/types";
 
@@ -17,6 +18,22 @@ const { status, data } = await useLazyAsyncData<AtomFeed>("feed-data", () =>
 		},
 	}),
 );
+
+const input = ref("");
+const result = computed(() => {
+	const entries = (data?.value?.feed?.entry ?? []) as AtomFeed["feed"]["entry"];
+
+	const fuse = new Fuse(entries, {
+		threshold: 0.3,
+		keys: ["id", "title", "content", "link"],
+		includeScore: true,
+		includeMatches: true,
+	});
+
+	if (toValue(input).length === 0) return entries;
+
+	return fuse.search(toValue(input)).map((i) => i.item);
+});
 </script>
 
 <style scoped>
@@ -42,12 +59,22 @@ const { status, data } = await useLazyAsyncData<AtomFeed>("feed-data", () =>
     <div
         v-else-if="data != null && data.feed != null && data.feed.entry.length > 0"
     >
-      <p class="text-gray-700 dark:text-gray-300 font-light mb-4">
-        Total: {{ data.feed.entry.length }} articles
-      </p>
+      <div class="flex flex-col md:flex-row md:items-center mb-4 gap-4">
+        <p class="text-gray-700 dark:text-gray-300 font-light">
+          Total: {{ data.feed.entry.length }} articles
+        </p>
+        <UInput
+            icon="i-heroicons-magnifying-glass-20-solid"
+            size="sm"
+            color="white"
+            :trailing="false"
+            placeholder="Search..."
+            v-model="input"
+        />
+      </div>
       <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
-        <div v-for="item in data.feed.entry" :key="item.id" class="py-2">
-          <FeedData :feed="item"/>
+        <div v-for="d in result" :key="d.id" class="py-2">
+          <FeedData :feed="d"/>
         </div>
       </div>
     </div>
