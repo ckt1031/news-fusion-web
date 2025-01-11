@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 	ui: {
 		global: true,
 	},
-	routeRules: {
-		"/about": { prerender: true },
+	experimental: {
+		inlineRouteRules: true,
 	},
 });

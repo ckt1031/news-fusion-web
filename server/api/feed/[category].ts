@@ -41,34 +41,43 @@ export default defineEventHandler(async (event) => {
 
 	const url = `${feedURL}/${category.toLowerCase()}`;
 
-	// Fetch feed
-	const xml = await ofetch<string>(url, {
-		timeout: 10000, // 10 seconds
-		parseResponse: (txt) => txt,
-	});
+	console.log(`Fetching feed from ${url}`);
 
-	const parser = new XMLParser({
-		ignoreAttributes: false,
-		parseAttributeValue: false,
-	});
+	try {
+		// Fetch feed
+		const xml = await ofetch<string>(url, {
+			timeout: 10000, // 10 seconds
+			parseResponse: (txt) => txt,
+		});
 
-	// Validate feed
-	const data = AtomFeedSchema.parse(parser.parse(xml));
+		const parser = new XMLParser({
+			ignoreAttributes: false,
+			parseAttributeValue: false,
+		});
 
-	// Filter entries by date, if the article is on that date only
-	const entries = data.feed.entry.filter(
-		(entry) => new Date(entry.updated).toISOString().split("T")[0] === date,
-	);
+		// Validate feed
+		const data = AtomFeedSchema.parse(parser.parse(xml));
 
-	return {
-		error: null,
-		// Re-order the feed with date descending
-		...data,
-		feed: {
-			...data.feed,
-			entry: entries.sort((a, b) => {
-				return new Date(b.updated).getTime() - new Date(a.updated).getTime();
-			}),
-		},
-	};
+		// Filter entries by date, if the article is on that date only
+		const entries = data.feed.entry.filter(
+			(entry) => new Date(entry.updated).toISOString().split("T")[0] === date,
+		);
+
+		return {
+			error: null,
+			// Re-order the feed with date descending
+			...data,
+			feed: {
+				...data.feed,
+				entry: entries.sort((a, b) => {
+					return new Date(b.updated).getTime() - new Date(a.updated).getTime();
+				}),
+			},
+		};
+	} catch (e) {
+		console.error(e);
+		return {
+			error: "Failed to fetch feed",
+		};
+	}
 });

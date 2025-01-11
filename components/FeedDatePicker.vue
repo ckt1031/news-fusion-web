@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { format } from "date-fns";
 import dayjs from "dayjs";
+import { getFeedFetchKey } from "~/lib/keys";
 
 // Get query params
 const route = useRoute();
@@ -13,7 +14,10 @@ const date = ref(dayjs(queryDate).toDate());
 
 const toast = useToast();
 const router = useRouter();
-const refresh = () => refreshNuxtData("feed-data");
+
+const category = (route.params.category as string) ?? "world";
+const key = getFeedFetchKey(category, route.query.date as string | undefined);
+const refresh = () => refreshNuxtData(key);
 
 const onDateChange = (newDate: Date) => {
 	if (dayjs(newDate).isAfter(dayjs())) {

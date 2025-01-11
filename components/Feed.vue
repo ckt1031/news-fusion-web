@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import Fuse from "fuse.js";
 import type { z } from "zod";
+import { getFeedFetchKey } from "~/lib/keys";
 import type { AtomFeedSchema } from "~/lib/types";
 
 const route = useRoute();
-const category = route.params.category ?? "world";
+const category = (route.params.category as string) ?? "world";
 
 type Error = {
 	error: string | null;
 };
 type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
 
-const { status, data } = await useLazyAsyncData<AtomFeed>("feed-data", () =>
+const key = getFeedFetchKey(category, route.query.date as string | undefined);
+const { status, data } = await useLazyAsyncData<AtomFeed>(key, () =>
 	$fetch(`/api/feed/${category}`, {
 		query: {
 			date: route.query.date,
@@ -63,14 +65,17 @@ const result = computed(() => {
         <p class="text-gray-700 dark:text-gray-300 font-light">
           Total: {{ data.feed.entry.length }} articles
         </p>
-        <UInput
-            icon="i-heroicons-magnifying-glass-20-solid"
-            size="sm"
-            color="white"
-            :trailing="false"
-            placeholder="Search..."
-            v-model="input"
-        />
+        <div class="flex flex-row gap-2">
+          <UInput
+              icon="i-heroicons-magnifying-glass-20-solid"
+              size="sm"
+              color="white"
+              :trailing="false"
+              placeholder="Search..."
+              v-model="input"
+          />
+          <FeedRefresh/>
+        </div>
       </div>
       <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
         <div v-for="d in result" :key="d.id" class="py-2">

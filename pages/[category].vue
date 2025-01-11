@@ -2,6 +2,14 @@
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
 import { allowedCategories } from "~/lib/config";
 
+defineRouteRules({
+	ssr: true,
+	prerender: false,
+	isr: 60,
+	swr: 60,
+	cache: { maxAge: 60 },
+});
+
 const route = useRoute();
 const category = route.params.category as string; // Get the category from the route
 

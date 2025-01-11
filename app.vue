@@ -25,12 +25,16 @@ body {
 </style>
 
 <template>
-  <div class="root-container">
-    <Header/>
-    <div class="padding-container flex flex-1 flex-col">
-      <NuxtPage/>
+  <NuxtRouteAnnouncer/>
+  <NuxtLoadingIndicator/>
+  <NuxtLayout>
+    <div class="root-container">
+      <Header/>
+      <div class="padding-container flex flex-1 flex-col">
+        <NuxtPage/>
+      </div>
+      <Footer/>
     </div>
-    <Footer/>
-  </div>
-  <UNotifications />
+    <UNotifications/>
+  </NuxtLayout>
 </template>

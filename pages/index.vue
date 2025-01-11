@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
+
+defineRouteRules({
+	ssr: true,
+	prerender: false,
+	isr: 60,
+	swr: 60,
+	cache: { maxAge: 60 },
+});
 </script>
 
 <template>
