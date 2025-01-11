@@ -29,4 +29,5 @@ body {
       <NuxtPage/>
     </div>
   </div>
+  <UNotifications />
 </template>

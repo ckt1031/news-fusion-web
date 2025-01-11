@@ -11,10 +11,22 @@ const queryDate =
 
 const date = ref(dayjs(queryDate).toDate());
 
+const toast = useToast();
 const router = useRouter();
 const refresh = () => refreshNuxtData("feed-data");
 
 const onDateChange = (newDate: Date) => {
+	if (dayjs(newDate).isAfter(dayjs())) {
+		// set date to today
+		date.value = dayjs().toDate();
+		toast.add({
+			icon: "i-hugeicons-calendar-01",
+			title: "Invalid Date",
+			description: "Please select a date in the past",
+		});
+		return;
+	}
+
 	const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
 	router.push({ query: { date: newQueryDate } });
 	refresh();

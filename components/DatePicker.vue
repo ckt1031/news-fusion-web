@@ -35,7 +35,7 @@ const attrs = {
 	borderless: true,
 	color: "blue",
 	"is-dark": { selector: "html", darkClass: "dark" },
-	"first-day-of-week": 2,
+	"first-day-of-week": 1,
 };
 
 function onDayClick(date: Date, event: MouseEvent): void {
