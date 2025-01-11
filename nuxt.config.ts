@@ -9,7 +9,6 @@ export default defineNuxtConfig({
 		"@nuxtjs/mdc",
 		"@nuxt/scripts",
 		"nuxt-easy-lightbox",
-		"nuxt-security",
 	],
 	devtools: { enabled: true },
 	fonts: {
@@ -31,36 +30,6 @@ export default defineNuxtConfig({
 	scripts: {
 		defaultScriptOptions: {
 			bundle: true,
-		},
-	},
-
-	// https://nuxt-security.vercel.app/getting-started/configuration
-	security: {
-		nonce: true,
-		ssg: {
-			meta: true, // Enables CSP as a meta tag in SSG mode
-			hashScripts: true, // Enables CSP hash support for scripts in SSG mode
-			hashStyles: false, // Disables CSP hash support for styles in SSG mode (recommended)
-		},
-		csrf: true,
-		strict: true,
-		headers: {
-			xXSSProtection: "1; mode=block",
-			contentSecurityPolicy: {
-				// Image allow all
-				"img-src": ["self", "data:", "https://*"],
-				"object-src": ["self", "data:", "https://*"],
-				"style-src": ["'self'", "'unsafe-inline'"],
-				"script-src": [
-					"'self'",
-					"'nonce-{{nonce}}'",
-					"'strict-dynamic'",
-					"'unsafe-inline'",
-					"https://static.cloudflareinsights.com/beacon.min.js",
-					"https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
-				],
-				"connect-src": ["'self'", "https://*"],
-			},
 		},
 	},
 });
