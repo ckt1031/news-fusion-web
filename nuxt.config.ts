@@ -10,8 +10,6 @@ export default defineNuxtConfig({
 		global: true,
 	},
 	routeRules: {
-		"/": { isr: 60 },
 		"/about": { prerender: true },
-		"/[category]": { isr: 60 },
 	},
 });
