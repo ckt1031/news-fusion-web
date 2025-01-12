@@ -44,8 +44,8 @@ export const allowedCategories = [
 		value: "free-games",
 	},
 	{
-		name: "Politics",
-		value: "political",
+		name: "Magazine",
+		value: "magazine",
 	},
 	{
 		name: "Software",
