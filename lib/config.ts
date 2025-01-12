@@ -45,7 +45,7 @@ export const allowedCategories = [
 	},
 	{
 		name: "Politics",
-		value: "politics",
+		value: "political",
 	},
 	{
 		name: "Software",
