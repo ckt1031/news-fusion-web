@@ -43,4 +43,12 @@ export const allowedCategories = [
 		name: "Free Games",
 		value: "free-games",
 	},
+	{
+		name: "Politics",
+		value: "politics",
+	},
+	{
+		name: "Software",
+		value: "software",
+	},
 ];
