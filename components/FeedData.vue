@@ -61,19 +61,27 @@ const imageURL = props.feed.thumbnail;
       </span>
     </button>
     <div v-if="openContent === 'true'" class="my-2">
-      <p class="text-gray-500 dark:text-gray-400">
+      <p class="text-gray-500 dark:text-gray-400 non-content-class">
         {{
           dayjs(props.feed.updated).format('MMMM D, YYYY')
         }}
       </p>
-      <MDC :value="props.feed.content"
-           class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"/>
+      <MDC
+          :value="props.feed.content"
+          class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"
+      />
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
-        <UTooltip :text="props.feed.link.length < 50 ? props.feed.link : props.feed.link.slice(0, 50) + '...'">
-          <a :href="props.feed.link" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
-             target="_blank">
+        <UTooltip
+            :text="props.feed.link.length < 50 ? props.feed.link : props.feed.link.slice(0, 50) + '...'"
+            class="non-content-class"
+        >
+          <a
+              :href="props.feed.link"
+              class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
+              target="_blank"
+          >
             <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4"/>
             Read more
           </a>
