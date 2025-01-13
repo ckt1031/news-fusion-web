@@ -12,7 +12,7 @@ useHead({
 
 <style>
 body {
-  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+  font-family: 'Inter', 'Noto Sans TC', 'Noto Sans SC', sans-serif;
 }
 
 .root-container {
