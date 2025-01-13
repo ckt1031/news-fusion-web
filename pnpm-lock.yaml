@@ -23,6 +23,9 @@ importers:
       nuxt:
         specifier: ^3.15.1
         version: 3.15.1(@biomejs/biome@1.9.4)(@parcel/watcher@2.5.0)(@types/node@22.10.5)(db0@0.2.1)(ioredis@5.4.2)(magicast@0.3.5)(rollup@4.30.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-tsc@2.2.0(typescript@5.7.3))(yaml@2.7.0)
+      nuxt-shiki:
+        specifier: 0.3.0
+        version: 0.3.0(magicast@0.3.5)(rollup@4.30.1)
       ofetch:
         specifier: ^1.4.1
         version: 1.4.1
@@ -4112,6 +4115,9 @@ packages:
     resolution: {integrity: sha512-yjJggqwSkymaWM/f4+1nPBTW1Hg7tZ0ZQax69zlqq+Ftc6rfAnJSgGUwhAuoo7E7x3JGQ0Uzzokz11Y7PuRj6g==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
+
+  nuxt-shiki@0.3.0:
+    resolution: {integrity: sha512-edeP230QQmQ02PdquCjE0noM8+RNTrpjJk1pfR1tIJ5gBp1DegzTe4WdFUWXu7sjSiIndfDy2KbQ9SPscGROJw==}
 
   nuxt@3.15.1:
     resolution: {integrity: sha512-8sKgqjhu5JoaVv89TnBW5S0jvsXRrEWGF+CguYUPK+6sRAtNcJAwcWxd4pEmURYQ2D0jjdfgr/VyH0i9CdhkBQ==}
@@ -10968,6 +10974,17 @@ snapshots:
       boolbase: 1.0.0
 
   nuxi@3.19.1: {}
+
+  nuxt-shiki@0.3.0(magicast@0.3.5)(rollup@4.30.1):
+    dependencies:
+      '@nuxt/kit': 3.15.1(magicast@0.3.5)(rollup@4.30.1)
+      knitwork: 1.2.0
+      shiki: 1.26.1
+      unwasm: 0.3.9
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
 
   nuxt@3.15.1(@biomejs/biome@1.9.4)(@parcel/watcher@2.5.0)(@types/node@22.10.5)(db0@0.2.1)(ioredis@5.4.2)(magicast@0.3.5)(rollup@4.30.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-tsc@2.2.0(typescript@5.7.3))(yaml@2.7.0):
     dependencies:

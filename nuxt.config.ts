@@ -3,7 +3,13 @@ import removeConsole from "vite-plugin-remove-console";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
-	modules: ["@nuxt/ui", "@nuxt/fonts", "@nuxtjs/mdc", "@nuxt/scripts"],
+	modules: [
+		"@nuxt/ui",
+		"@nuxt/fonts",
+		"@nuxtjs/mdc",
+		"@nuxt/scripts",
+		"nuxt-shiki",
+	],
 	devtools: { enabled: true },
 	fonts: {
 		provider: "google",
@@ -34,5 +40,9 @@ export default defineNuxtConfig({
 			},
 			charset: "utf-8",
 		},
+	},
+
+	shiki: {
+		defaultTheme: "github-dark-default",
 	},
 });
