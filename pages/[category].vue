@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
 import { allowedCategories } from "~/lib/config";
-import { onLoadImmersiveTranslate } from "~/lib/immersive-translate";
+import { loadImmersiveTranslate } from "~/lib/immersive-translate";
 
 defineRouteRules({
 	ssr: true,
@@ -18,23 +18,7 @@ if (!allowedCategories.map((c) => c.value).includes(category.toLowerCase())) {
 	});
 }
 
-const { onLoaded } = useScript(
-	{
-		src: "https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
-		async: true,
-	},
-	{
-		use() {
-			return { initImmersiveTranslate: window.initImmersiveTranslate };
-		},
-	},
-);
-
-onMounted(() => {
-	onLoaded(({ initImmersiveTranslate }) => {
-		onLoadImmersiveTranslate(initImmersiveTranslate);
-	});
-});
+loadImmersiveTranslate();
 </script>
 
 <template>

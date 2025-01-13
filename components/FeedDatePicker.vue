@@ -12,7 +12,6 @@ const queryDate =
 
 const date = ref(dayjs(queryDate).toDate());
 
-const toast = useToast();
 const router = useRouter();
 
 const category = (route.params.category as string) ?? "world";
@@ -23,11 +22,14 @@ const onDateChange = (newDate: Date) => {
 	if (dayjs(newDate).isAfter(dayjs())) {
 		// set date to today
 		date.value = dayjs().toDate();
-		toast.add({
-			icon: "i-hugeicons-calendar-01",
-			title: "Invalid Date",
-			description: "Please select a date in the past",
-		});
+		alert("Cannot select future date");
+		return;
+	}
+
+	// If the date selected is older than 25 days, return
+	if (dayjs(newDate).isBefore(dayjs().subtract(25, "days"))) {
+		date.value = dayjs().toDate();
+		alert("Cannot select date older than 25 days");
 		return;
 	}
 

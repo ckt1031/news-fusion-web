@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { immersiveTranslateConfig } from "~/lib/immersive-translate";
+import {
+	immersiveTranslateConfig,
+	loadImmersiveTranslate,
+} from "~/lib/immersive-translate";
 
 const config = [
 	{
@@ -12,6 +15,8 @@ const copyToClipboard = () => {
 	navigator.clipboard.writeText(JSON.stringify(config, null, 2));
 	alert("Copied to clipboard!");
 };
+
+loadImmersiveTranslate();
 </script>
 
 <template>
@@ -19,8 +24,10 @@ const copyToClipboard = () => {
     <h1 class="text-2xl font-bold">
       Immersive Translate
     </h1>
-    <p class="text-gray-600 dark:text-gray-400">
-      This page is for configuring the Immersive Translate extension.
+    <p class="text-gray-600 dark:text-gray-400 is-content">
+      We have integrated the Immersive Translate to enable splitted translation of the content.
+      SDK is automatically loaded and initialized when the page is loaded.
+      If you have separately installed it's extension, you can use apply the configuration in developer settings.
     </p>
     <Shiki
         lang="json"

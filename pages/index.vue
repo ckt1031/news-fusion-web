@@ -1,29 +1,13 @@
 <script setup lang="ts">
 import FeedDatePicker from "~/components/FeedDatePicker.vue";
-import { onLoadImmersiveTranslate } from "~/lib/immersive-translate";
+import { loadImmersiveTranslate } from "~/lib/immersive-translate";
 
 defineRouteRules({
 	ssr: true,
 	prerender: false,
 });
 
-const { onLoaded } = useScript(
-	{
-		src: "https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
-		async: true,
-	},
-	{
-		use() {
-			return { initImmersiveTranslate: window.initImmersiveTranslate };
-		},
-	},
-);
-
-onMounted(() => {
-	onLoaded(({ initImmersiveTranslate }) => {
-		onLoadImmersiveTranslate(initImmersiveTranslate);
-	});
-});
+loadImmersiveTranslate();
 </script>
 
 <template>

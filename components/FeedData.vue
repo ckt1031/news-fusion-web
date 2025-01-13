@@ -56,19 +56,19 @@ const imageURL = props.feed.thumbnail;
 <template>
   <div class="flex flex-col">
     <button class="text-left" @click="onClick">
-      <span class="text-gray-700 dark:text-gray-300 font-medium">
+      <span class="text-gray-700 dark:text-gray-300 font-medium is-content">
         {{ props.feed.title }}
       </span>
     </button>
     <div v-if="openContent === 'true'" class="my-2">
-      <p class="text-gray-500 dark:text-gray-400 non-content-class">
+      <p class="text-gray-500 dark:text-gray-400nt- non-conteclass">
         {{
           dayjs(props.feed.updated).format('MMMM D, YYYY')
         }}
       </p>
       <MDC
           :value="props.feed.content"
-          class="group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"
+          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"
       />
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">

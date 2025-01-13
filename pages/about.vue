@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { loadImmersiveTranslate } from "~/lib/immersive-translate";
+
 defineRouteRules({
 	prerender: true,
 });
+
+loadImmersiveTranslate();
 </script>
 
 <template>
