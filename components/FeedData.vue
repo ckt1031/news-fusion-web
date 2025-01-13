@@ -16,7 +16,7 @@ const onClick = () => {
 	openContent.value = openContent.value === "true" ? "false" : "true";
 };
 
-const imageURL = props.feed["media:group"]?.["media:content"]?.["@_url"];
+const imageURL = props.feed.thumbnail;
 </script>
 
 <style scoped>
@@ -71,8 +71,8 @@ const imageURL = props.feed["media:group"]?.["media:content"]?.["@_url"];
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
-        <UTooltip :text="props.feed.id.slice(0, 50)">
-          <a :href="props.feed.id" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
+        <UTooltip :text="props.feed.link.length < 50 ? props.feed.link : props.feed.link.slice(0, 50) + '...'">
+          <a :href="props.feed.link" class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
              target="_blank">
             <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4"/>
             Read more

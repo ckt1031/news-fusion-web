@@ -8,6 +8,7 @@ export const AtomFeedSchema = z.object({
 				title: z.string(),
 				updated: z.string().transform((date) => new Date(date).toISOString()),
 				content: z.string(),
+				link: z.string(),
 				"media:group": z
 					.object({
 						"media:content": z
@@ -18,6 +19,10 @@ export const AtomFeedSchema = z.object({
 					})
 					.optional(),
 			})
+			.transform((d) => ({
+				...d,
+				thumbnail: d["media:group"]?.["media:content"]?.["@_url"],
+			}))
 			.array(),
 	}),
 });
