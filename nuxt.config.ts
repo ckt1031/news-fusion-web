@@ -26,4 +26,13 @@ export default defineNuxtConfig({
 			bundle: true,
 		},
 	},
+
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: "en",
+			},
+			charset: "utf-8",
+		},
+	},
 });

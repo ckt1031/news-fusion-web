@@ -16,6 +16,7 @@ const refresh = () => refreshNuxtData(key);
         size="sm"
         color="primary"
         variant="outline"
+        title="Refresh Feed"
         @click="refresh"
     />
   </UTooltip>

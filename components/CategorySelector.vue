@@ -22,7 +22,14 @@ const onChange = (value: string) => {
 <template>
   <div class="flex flex-row items-center gap-2">
     <p>Category:</p>
-    <USelect v-if="allowedCategories && selectedCategory" v-model="selectedCategory" option-attribute="name" :options="allowedCategories" @change="onChange"/>
+    <USelect
+        v-if="allowedCategories && selectedCategory"
+        v-model="selectedCategory"
+        option-attribute="name"
+        :options="allowedCategories"
+        @change="onChange"
+        title="Select a category"
+    />
   </div>
 </template>
 
