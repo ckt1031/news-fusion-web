@@ -3,6 +3,8 @@ import dayjs from "dayjs";
 import type { z } from "zod";
 import FeedThumbnail from "~/components/FeedThumbnail.vue";
 import type { AtomFeedSchema } from "~/lib/types";
+import FeedDate from "~/components/FeedDate.vue";
+import FeedReadMore from "~/components/FeedReadMore.vue";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;
 
@@ -65,35 +67,20 @@ const imageURL = props.feed.thumbnail;
       </span>
     </button>
     <div v-if="openContent === 'true'" class="my-2">
-      <p class="text-gray-500 dark:text-gray-400nt- non-conteclass">
-        {{
-          dayjs(props.feed.updated).format('MMMM D, YYYY')
-        }}
-      </p>
+      <FeedDate :date-iso="props.feed.updated"/>
       <MDC
           :value="props.feed.content"
-          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base
+          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose
            prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded prose-code:p-1
            prose-code:font-console
            prose-code:before:content-none prose-code:after:content-none
-           lg:prose-xl dark:prose-invert prose-neutral markdown-style max-w-full"
+           md:prose-lg lg:prose-xl
+           dark:prose-invert prose-neutral markdown-style max-w-full"
       />
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">
         <FeedPublisher :url="props.feed.id"/>
-        <UTooltip
-            :text="props.feed.link.length < 50 ? props.feed.link : props.feed.link.slice(0, 50) + '...'"
-            class="non-content-class"
-        >
-          <a
-              :href="props.feed.link"
-              class="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
-              target="_blank"
-          >
-            <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4"/>
-            Read more
-          </a>
-        </UTooltip>
+        <FeedReadMore :link="props.feed.link"/>
       </div>
     </div>
   </div>
