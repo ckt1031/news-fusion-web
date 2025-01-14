@@ -45,4 +45,16 @@ export default defineNuxtConfig({
 	shiki: {
 		defaultTheme: "github-dark-default",
 	},
+
+	mdc: {
+		rehypePlugins: {
+			"rehype-external-links": {
+				// rel and target as options, make it open in new tab
+
+				// @ts-ignore
+				target: ["_blank"],
+				rel: ["noopener", " noreferrer"],
+			},
+		},
+	},
 });

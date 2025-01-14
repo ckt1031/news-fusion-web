@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
 import type { z } from "zod";
-import FeedThumbnail from "~/components/FeedThumbnail.vue";
-import type { AtomFeedSchema } from "~/lib/types";
 import FeedDate from "~/components/FeedDate.vue";
 import FeedReadMore from "~/components/FeedReadMore.vue";
+import FeedThumbnail from "~/components/FeedThumbnail.vue";
+import type { AtomFeedSchema } from "~/lib/types";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;
 
