@@ -20,6 +20,10 @@ const imageURL = props.feed.thumbnail;
 </script>
 
 <style scoped>
+.markdown-style code {
+  @apply font-mono text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg;
+}
+
 .markdown-style h1 {
   @apply text-2xl font-bold;
 }
@@ -68,7 +72,11 @@ const imageURL = props.feed.thumbnail;
       </p>
       <MDC
           :value="props.feed.content"
-          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base dark:prose-invert prose-neutral markdown-style max-w-full"
+          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose prose-base
+           prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded prose-code:p-1
+           prose-code:font-console
+           prose-code:before:content-none prose-code:after:content-none
+           lg:prose-xl dark:prose-invert prose-neutral markdown-style max-w-full"
       />
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
       <div class="flex flex-row items-center gap-2 mt-1">
