@@ -13,7 +13,6 @@ useHead({
 <style>
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', 'Noto Sans TC', 'Noto Sans SC', sans-serif;
 }
 
 .root-container {
@@ -29,7 +28,7 @@ html {
   <NuxtRouteAnnouncer/>
   <NuxtLoadingIndicator/>
   <NuxtLayout>
-    <main class="root-container">
+    <main class="root-container font-sans">
       <Header/>
       <div class="padding-container flex flex-1 flex-col">
         <NuxtPage/>

@@ -11,14 +11,14 @@ export default (<Partial<Config>>{
 				primary: colors.blue,
 			},
 			fontFamily: {
-				sans: ["Inter", "Noto Sans TC", "Noto Sans SC", "sans-serif"],
-				mono: [
-					"Geist Mono",
+				sans: [
 					"Inter",
+					"sans-serif",
 					"Noto Sans TC",
 					"Noto Sans SC",
-					"monospace",
+					"sans-serif",
 				],
+				mono: ["LXGW WenKai Mono TC", "monospace"],
 				console: ["JetBrains Mono", "Consolas", "monospace"],
 			},
 		},
