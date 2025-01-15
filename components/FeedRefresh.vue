@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { getFeedFetchKey } from "~/lib/keys";
 
-const route = useRoute();
-const category = (route.params.category as string) ?? "world";
-const date = route.query.date as string | undefined;
-
-const key = getFeedFetchKey(category, date);
-const refresh = () => refreshNuxtData(key);
+const props = defineProps<{
+	refresh: () => void;
+}>();
 </script>
 
 <template>
@@ -17,7 +14,7 @@ const refresh = () => refreshNuxtData(key);
         color="primary"
         variant="outline"
         title="Refresh Feed"
-        @click="refresh"
+        @click="props.refresh"
     />
   </UTooltip>
 </template>

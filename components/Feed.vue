@@ -7,18 +7,21 @@ import type { AtomFeedSchema } from "~/lib/types";
 const route = useRoute();
 const category = (route.params.category as string) ?? "world";
 
-type Error = {
+interface Error {
 	error: string | null;
-};
+}
+
 type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
 
 const key = getFeedFetchKey(category, route.query.date as string | undefined);
-const { status, data } = await useLazyAsyncData<AtomFeed>(key, () =>
-	$fetch(`/api/feed/${category}`, {
+const { status, data, refresh } = useLazyFetch<AtomFeed>(
+	`/api/feed/${category}`,
+	{
+		key,
 		query: {
 			date: route.query.date,
 		},
-	}),
+	},
 );
 
 const input = ref("");
@@ -74,7 +77,7 @@ const result = computed(() => {
               placeholder="Search..."
               v-model="input"
           />
-          <FeedRefresh/>
+          <FeedRefresh :refresh="refresh"/>
         </div>
       </div>
       <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
