@@ -1,27 +1,14 @@
 <script setup lang="ts">
 import Fuse from "fuse.js";
-import type { z } from "zod";
-import { getFeedFetchKey } from "~/lib/keys";
-import type { AtomFeedSchema } from "~/lib/types";
+import type { AtomFeed } from "~/lib/types";
 
 const route = useRoute();
 const category = (route.params.category as string) ?? "world";
+const date = route.params.date as string | undefined;
 
-interface Error {
-	error: string | null;
-}
-
-type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
-
-const key = getFeedFetchKey(category, route.query.date as string | undefined);
-const { status, data, refresh } = useLazyFetch<AtomFeed>(
+const { status, data, refresh } = await useLazyFetch<AtomFeed>(
 	`/api/feed/${category}`,
-	{
-		key,
-		query: {
-			date: route.query.date,
-		},
-	},
+	{ query: { date } },
 );
 
 const input = ref("");

@@ -12,7 +12,7 @@ const router = useRouter();
 
 const onChange = (value: string) => {
 	selectedCategory.value = value;
-	router.push({ name: "category", params: { category: value } });
+	router.push({ path: `/category/${value}` });
 };
 </script>
 

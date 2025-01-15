@@ -1,22 +1,18 @@
 <script setup lang="ts">
 import { format } from "date-fns";
 import dayjs from "dayjs";
-import { getFeedFetchKey } from "~/lib/keys";
 
 // Get query params
 const route = useRoute();
 // YYYY-MM-DD
-const queryDate =
-	(route.query.date as string | undefined) ??
-	dayjs().format("YYYY-MM-DD").toString();
+const _paramsDate = route.params.date as string | undefined;
+const _paramsCategory =
+	(route.params.category as string | undefined) || "world";
+const queryDate = _paramsDate ?? dayjs().format("YYYY-MM-DD");
 
 const date = ref(dayjs(queryDate).toDate());
 
 const router = useRouter();
-
-const category = (route.params.category as string) ?? "world";
-const key = getFeedFetchKey(category, route.query.date as string | undefined);
-const refresh = () => refreshNuxtData(key);
 
 const onDateChange = (newDate: Date) => {
 	if (dayjs(newDate).isAfter(dayjs())) {
@@ -34,8 +30,15 @@ const onDateChange = (newDate: Date) => {
 	}
 
 	const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
-	router.push({ query: { date: newQueryDate } });
-	refresh();
+
+	const reg = /\/\d{4}-\d{2}-\d{2}/;
+
+	if (reg.test(router.currentRoute.value.fullPath)) {
+		router.push({ params: { date: newQueryDate } });
+		return;
+	}
+
+	router.replace(`/category/${_paramsCategory}/${newQueryDate}`);
 };
 </script>
 

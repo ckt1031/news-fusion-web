@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { z } from "zod";
-import FeedDate from "~/components/FeedDate.vue";
-import FeedReadMore from "~/components/FeedReadMore.vue";
-import FeedThumbnail from "~/components/FeedThumbnail.vue";
+import FeedDate from "~/components/Feed/FeedDate.vue";
+import FeedReadMore from "~/components/Feed/FeedReadMore.vue";
+import FeedThumbnail from "~/components/Feed/FeedThumbnail.vue";
 import type { AtomFeedSchema } from "~/lib/types";
 
 type AtomFeed = z.infer<typeof AtomFeedSchema>;

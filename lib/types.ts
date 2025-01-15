@@ -30,6 +30,12 @@ export const AtomFeedSchema = z.object({
 	}),
 });
 
+interface Error {
+	error: string | null;
+}
+
+export type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
+
 export interface ImmTranPageRule {
 	excludeMatches?: string | string[]; // Exclude specific websites.
 	selectorMatches?: string | string[]; // Match using selectors without specifying all URLs

@@ -17,9 +17,6 @@ export default defineNuxtConfig({
 	ui: {
 		global: true,
 	},
-	experimental: {
-		inlineRouteRules: true,
-	},
 
 	// Vite plugin options
 	vite: {
@@ -56,5 +53,11 @@ export default defineNuxtConfig({
 				rel: ["noopener", " noreferrer"],
 			},
 		},
+	},
+	routeRules: {
+		"/": { isr: 120, swr: 120 },
+		"/category/**": { isr: 120, swr: 120 },
+		"/about": { prerender: true },
+		"/immersive-translate": { prerender: true },
 	},
 });

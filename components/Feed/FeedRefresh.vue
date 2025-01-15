@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getFeedFetchKey } from "~/lib/keys";
-
 const props = defineProps<{
 	refresh: () => void;
 }>();
