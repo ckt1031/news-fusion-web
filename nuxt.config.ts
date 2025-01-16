@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 		"@nuxtjs/mdc",
 		"@nuxt/scripts",
 		"nuxt-shiki",
+		"@nuxtjs/sitemap",
+		"@nuxtjs/robots",
 	],
 	devtools: { enabled: true },
 	fonts: {
@@ -17,19 +19,15 @@ export default defineNuxtConfig({
 	ui: {
 		global: true,
 	},
-
-	// Vite plugin options
 	vite: {
 		// Options for Vite plugin
 		plugins: [removeConsole()],
 	},
-
 	scripts: {
 		defaultScriptOptions: {
 			bundle: true,
 		},
 	},
-
 	app: {
 		head: {
 			htmlAttrs: {
@@ -38,11 +36,9 @@ export default defineNuxtConfig({
 			charset: "utf-8",
 		},
 	},
-
 	shiki: {
 		defaultTheme: "github-dark-default",
 	},
-
 	mdc: {
 		rehypePlugins: {
 			"rehype-external-links": {
@@ -59,5 +55,18 @@ export default defineNuxtConfig({
 		"/category/**": { isr: 120, swr: 120 },
 		"/about": { prerender: true },
 		"/immersive-translate": { prerender: true },
+	},
+	nitro: {
+		compressPublicAssets: true,
+	},
+	site: {
+		indexable: false,
+		url: "https://news.tsun1031.xyz",
+		name: "News Fusion",
+	},
+	robots: {
+		blockNonSeoBots: true,
+		blockAiBots: true,
+		disallow: ["/"],
 	},
 });
