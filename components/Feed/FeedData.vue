@@ -69,9 +69,9 @@ const imageURL = props.feed.thumbnail;
       <FeedDate :date-iso="props.feed.updated"/>
       <MDC
           :value="props.feed.content"
-          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-mono prose
+          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-summary prose
            prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded prose-code:p-1
-           prose-code:font-console
+           prose-code:font-mono
            prose-code:before:content-none prose-code:after:content-none
            md:prose-lg lg:prose-xl
            dark:prose-invert prose-neutral markdown-style max-w-full"

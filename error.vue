@@ -19,7 +19,7 @@ const handleError = () => clearError({ redirect: "/" });
           <h1 class="text-2xl font-bold">Page Not Found</h1>
           <p class="text-lg">The page you are looking for does not exist.</p>
         </div>
-        <code v-else class="bg-black text-sm p-2 rounded-md font-console max-w-64 max-h-36 overflow-auto">
+        <code v-else class="bg-black text-sm p-2 rounded-md font-mono max-w-64 max-h-36 overflow-auto">
           {{ error.message }}
         </code>
         <button @click="handleError"

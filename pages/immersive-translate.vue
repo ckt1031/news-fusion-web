@@ -32,7 +32,7 @@ loadImmersiveTranslate();
     <Shiki
         lang="json"
         :code="JSON.stringify(config, null, 2)"
-        class="bg-[#0d1117] p-4 rounded-lg overflow-x-auto w-full"
+        class="bg-[#0d1117] p-4 rounded-lg overflow-x-auto w-full font-mono"
     />
     <UButton
         icon="i-hugeicons-copy-01"
