@@ -28,12 +28,12 @@ html {
   <NuxtRouteAnnouncer/>
   <NuxtLoadingIndicator/>
   <NuxtLayout>
-    <main class="root-container font-sans">
+    <div class="root-container font-sans">
       <Header/>
-      <div class="padding-container flex flex-1 flex-col">
+      <main class="padding-container flex flex-1 flex-col">
         <NuxtPage/>
-      </div>
+      </main>
       <Footer/>
-    </main>
+    </div>
   </NuxtLayout>
 </template>
