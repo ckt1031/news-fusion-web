@@ -34,6 +34,18 @@ if (dayjs().diff(djsDate, "day") > 25 || dayjs().diff(djsDate, "day") < 0) {
 }
 
 loadImmersiveTranslate();
+
+const displayingCategoryName = category.toUpperCase().replace("-", " ");
+
+useHead({
+	title: `${displayingCategoryName} on ${_paramsDate}`,
+	meta: [
+		{
+			name: "description",
+			content: `Latest news with ${displayingCategoryName} topic on ${_paramsDate}`,
+		},
+	],
+});
 </script>
 
 <template>

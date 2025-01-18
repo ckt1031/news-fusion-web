@@ -6,6 +6,10 @@ const props = defineProps({
 });
 
 const handleError = () => clearError({ redirect: "/" });
+
+useHead({
+	title: props.error.statusCode === 404 ? "Page Not Found" : "Error",
+});
 </script>
 
 <template>

@@ -17,6 +17,17 @@ const copyToClipboard = () => {
 };
 
 loadImmersiveTranslate();
+
+useHead({
+	title: "Immersive Translate",
+	meta: [
+		{
+			name: "description",
+			content:
+				"JSON configuration for the plugin, paste it in developer settings.",
+		},
+	],
+});
 </script>
 
 <template>

@@ -2,9 +2,12 @@
 import Footer from "~/components/Footer.vue";
 
 useHead({
-	title: "News Fusion",
+	titleTemplate: (title) => (title ? `${title} - News Fusion` : "News Fusion"),
 	meta: [
-		{ name: "description", content: "The news aggregator for modern age" },
+		{
+			name: "description",
+			content: "The news aggregator for modern age",
+		},
 	],
 });
 </script>

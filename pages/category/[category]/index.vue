@@ -13,10 +13,22 @@ if (!allowedCategories.map((c) => c.value).includes(category.toLowerCase())) {
 }
 
 loadImmersiveTranslate();
+
+const displayingCategoryName = category.toUpperCase().replace("-", " ");
+
+useHead({
+	title: displayingCategoryName,
+	meta: [
+		{
+			name: "description",
+			content: `Latest news with ${displayingCategoryName} topic.`,
+		},
+	],
+});
 </script>
 
 <template>
-  <FeedPage />
+  <FeedPage/>
 </template>
 
 <style scoped>

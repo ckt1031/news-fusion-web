@@ -2,6 +2,16 @@
 import { loadImmersiveTranslate } from "~/lib/immersive-translate";
 
 loadImmersiveTranslate();
+
+useHead({
+	title: "About",
+	meta: [
+		{
+			name: "description",
+			content: "The brief and introduction of News Fusion",
+		},
+	],
+});
 </script>
 
 <template>
