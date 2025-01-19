@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 import { ofetch } from "ofetch";
 import { z } from "zod";
 import { allowedCategories } from "~/lib/config";
-import { AtomFeedSchema } from "~/lib/types";
+import { AtomFeedSchema, type AtomFeedSingleEntry } from "~/lib/types";
 
 const feedURL = "https://news-fusion.tsun1031.xyz/v1/feed";
 
@@ -12,14 +12,7 @@ const querySchema = z.object({
 });
 
 export default defineEventHandler(async (event) => {
-	const category = getRouterParam(event, "category");
-
-	// Check if category exists
-	if (!category) {
-		return {
-			error: "Category not found",
-		};
-	}
+	const category = getRouterParam(event, "category") as string;
 
 	// Get date query parameter
 	const queries = await getValidatedQuery(event, (q) => querySchema.parse(q));
@@ -58,13 +51,15 @@ export default defineEventHandler(async (event) => {
 		// Validate feed
 		const data = AtomFeedSchema.parse(parser.parse(xml));
 
+		const entry: AtomFeedSingleEntry[] = data.feed.entry ?? [];
+
 		return {
 			error: null,
 			// Re-order the feed with date descending
 			...data,
 			feed: {
 				...data.feed,
-				entry: data.feed.entry.sort((a, b) => {
+				entry: entry.sort((a, b) => {
 					return new Date(b.updated).getTime() - new Date(a.updated).getTime();
 				}),
 			},

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Fuse from "fuse.js";
-import type { AtomFeed } from "~/lib/types";
+import type { AtomFeed, AtomFeedSingleEntry } from "~/lib/types";
 
 const route = useRoute();
 const category = (route.params.category as string) ?? "world";
@@ -13,7 +13,7 @@ const { status, data, refresh } = await useLazyFetch<AtomFeed>(
 
 const input = ref("");
 const result = computed(() => {
-	const entries = (data?.value?.feed?.entry ?? []) as AtomFeed["feed"]["entry"];
+	const entries = (data?.value?.feed?.entry ?? []) as AtomFeedSingleEntry[];
 
 	const fuse = new Fuse(entries, {
 		threshold: 0.3,
@@ -49,7 +49,7 @@ const result = computed(() => {
       {{ data.error }}
     </div>
     <div
-        v-else-if="data != null && data.feed != null && data.feed.entry.length > 0"
+        v-else-if="data != null && data.feed != null && data.feed.entry && data.feed.entry.length > 0"
     >
       <div class="flex flex-col md:flex-row md:items-center mb-4 gap-4">
         <p class="text-gray-700 dark:text-gray-300 font-light">
@@ -67,14 +67,18 @@ const result = computed(() => {
           <FeedRefresh :refresh="refresh"/>
         </div>
       </div>
-      <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700">
+      <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700" v-if="result.length > 0">
         <div v-for="d in result" :key="d.id" class="py-2">
           <FeedItem :entry="d"/>
         </div>
       </div>
+      <div v-else class="state">
+        <UIcon name="i-hugeicons-search-remove" class="w-5 h-5"/>
+        No search results
+      </div>
     </div>
     <div v-else class="state">
-      <UIcon name="i-hugeicons-notification-snooze-03" class="w-5 h-5"/>
+      <UIcon name="i-hugeicons-no-meeting-room" class="w-5 h-5"/>
       No news found
     </div>
   </div>

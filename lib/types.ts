@@ -29,7 +29,8 @@ export const AtomFeedSchema = z.object({
 				link: d.link["@_href"],
 				thumbnail: mediaGroup?.["media:content"]?.["@_url"],
 			}))
-			.array(),
+			.array()
+			.optional(),
 	}),
 });
 
@@ -37,8 +38,12 @@ interface Error {
 	error: string | null;
 }
 
+type NonNullable<T> = Exclude<T, null | undefined>;
+
 export type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
-export type AtomFeedSingleEntry = AtomFeed["feed"]["entry"][0];
+export type AtomFeedSingleEntry = NonNullable<
+	AtomFeed["feed"]["entry"]
+>[number];
 
 export interface ImmTranPageRule {
 	excludeMatches?: string | string[]; // Exclude specific websites.

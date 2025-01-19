@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { NuxtError } from "#app";
 import Global from "~/components/Layout/Global.vue";
+import type { NuxtError } from "#app";
 
 const props = defineProps({
 	error: Object as () => NuxtError,
