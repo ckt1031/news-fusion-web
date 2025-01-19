@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import CategorySelector from "~/components/Feed/CategorySelector.vue";
+import FeedCategorySelector from "~/components/Feed/FeedCategorySelector.vue";
 </script>
 
 <template>
   <div class="border-b border-gray-300 dark:border-gray-700">
     <div class="py-3 flex flex-col sm:flex-row gap-3">
-      <CategorySelector/>
+      <FeedCategorySelector/>
       <div class="flex flex-row items-center">
         <FeedDatePicker/>
       </div>
