@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 		"~/components/Layout",
 		"~/components/NuxtUI",
 	],
+	publicPath: "/assets/",
 	modules: [
 		"@nuxt/ui",
 		"@nuxt/fonts",
