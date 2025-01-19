@@ -39,14 +39,14 @@ export default defineEventHandler(async (event) => {
 		};
 	}
 
-	const url = `${feedURL}/${category.toLowerCase()}`;
+	const url = `${feedURL}/${category.toLowerCase()}?date=${date}`;
 
 	console.log(`Fetching feed from ${url}`);
 
 	try {
 		// Fetch feed
 		const xml = await ofetch<string>(url, {
-			timeout: 10000, // 10 seconds
+			timeout: 5 * 1000, // 5 seconds
 			parseResponse: (txt) => txt,
 		});
 
@@ -58,18 +58,13 @@ export default defineEventHandler(async (event) => {
 		// Validate feed
 		const data = AtomFeedSchema.parse(parser.parse(xml));
 
-		// Filter entries by date, if the article is on that date only
-		const entries = data.feed.entry.filter(
-			(entry) => new Date(entry.updated).toISOString().split("T")[0] === date,
-		);
-
 		return {
 			error: null,
 			// Re-order the feed with date descending
 			...data,
 			feed: {
 				...data.feed,
-				entry: entries.sort((a, b) => {
+				entry: data.feed.entry.sort((a, b) => {
 					return new Date(b.updated).getTime() - new Date(a.updated).getTime();
 				}),
 			},
