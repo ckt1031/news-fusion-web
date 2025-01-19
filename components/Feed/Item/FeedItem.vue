@@ -1,23 +1,15 @@
 <script setup lang="ts">
-import type { z } from "zod";
-import FeedDate from "~/components/Feed/Item/FeedDate.vue";
-import FeedReadMore from "~/components/Feed/Item/FeedReadMore.vue";
-import FeedThumbnail from "~/components/Feed/Item/FeedThumbnail.vue";
-import type { AtomFeedSchema } from "~/lib/types";
-
-type AtomFeed = z.infer<typeof AtomFeedSchema>;
+import type { AtomFeedSingleEntry } from "~/lib/types";
 
 const props = defineProps<{
-	feed: AtomFeed["feed"]["entry"][0];
+	entry: AtomFeedSingleEntry;
 }>();
 
-const openContent = useState(`open-${props.feed.id}`, () => "false");
+const openContent = useState(`open-${props.entry.id}`, () => "false");
 
 const onClick = () => {
 	openContent.value = openContent.value === "true" ? "false" : "true";
 };
-
-const imageURL = props.feed.thumbnail;
 </script>
 
 <style scoped>
@@ -62,25 +54,11 @@ const imageURL = props.feed.thumbnail;
   <div class="flex flex-col">
     <button class="text-left" @click="onClick">
       <span class="text-gray-700 dark:text-gray-300 font-medium is-content">
-        {{ props.feed.title }}
+        {{ props.entry.title }}
       </span>
     </button>
     <div v-if="openContent === 'true'" class="my-2">
-      <FeedDate :date-iso="props.feed.updated"/>
-      <MDC
-          :value="props.feed.content"
-          class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-summary prose
-           prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded prose-code:p-1
-           prose-code:font-mono
-           prose-code:before:content-none prose-code:after:content-none
-           md:prose-lg lg:prose-xl
-           dark:prose-invert prose-neutral markdown-style max-w-full"
-      />
-      <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
-      <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-3">
-        <FeedPublisher :url="props.feed.id" :name="props.feed.author.name"/>
-        <FeedReadMore :link="props.feed.link"/>
-      </div>
+      <LazyFeedItemDetail :entry="props.entry"/>
     </div>
   </div>
 </template>

@@ -38,6 +38,7 @@ interface Error {
 }
 
 export type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
+export type AtomFeedSingleEntry = AtomFeed["feed"]["entry"][0];
 
 export interface ImmTranPageRule {
 	excludeMatches?: string | string[]; // Exclude specific websites.

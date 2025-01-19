@@ -3,6 +3,13 @@ import removeConsole from "vite-plugin-remove-console";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
+	components: [
+		"~/components",
+		"~/components/Feed",
+		"~/components/Feed/Item",
+		"~/components/Layout",
+		"~/components/NuxtUI",
+	],
 	modules: [
 		"@nuxt/ui",
 		"@nuxt/fonts",

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Footer from "~/components/Layout/Footer.vue";
-
 useHead({
 	titleTemplate: (title) => (title ? `${title} - News Fusion` : "News Fusion"),
 	meta: [

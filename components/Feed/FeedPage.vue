@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import FeedCategorySelector from "~/components/Feed/FeedCategorySelector.vue";
 </script>
 
 <template>
