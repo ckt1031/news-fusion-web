@@ -15,7 +15,7 @@ const props = defineProps<{
         target="_blank"
     >
       <UIcon name="i-hugeicons-link-square-02" class="w-4 h-4"/>
-      Read more
+      Read More
     </a>
   </UTooltip>
 </template>

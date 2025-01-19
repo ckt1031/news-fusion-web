@@ -77,8 +77,8 @@ const imageURL = props.feed.thumbnail;
            dark:prose-invert prose-neutral markdown-style max-w-full"
       />
       <FeedThumbnail :image-url="imageURL" v-if="imageURL"/>
-      <div class="flex flex-row items-center gap-2 mt-1">
-        <FeedPublisher :url="props.feed.id"/>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-3">
+        <FeedPublisher :url="props.feed.id" :name="props.feed.author.name"/>
         <FeedReadMore :link="props.feed.link"/>
       </div>
     </div>

@@ -11,6 +11,9 @@ export const AtomFeedSchema = z.object({
 				link: z.object({
 					"@_href": z.string(),
 				}),
+				author: z.object({
+					name: z.string(),
+				}),
 				"media:group": z
 					.object({
 						"media:content": z
