@@ -21,7 +21,7 @@ const djsDate = dayjs(_paramsDate);
 if (!djsDate.isValid()) {
 	throw createError({
 		statusCode: 400,
-		statusMessage: "Invalid date",
+		statusMessage: `Invalid date format: ${_paramsDate}`,
 	});
 }
 
@@ -29,7 +29,7 @@ if (!djsDate.isValid()) {
 if (dayjs().diff(djsDate, "day") > 25 || dayjs().diff(djsDate, "day") < 0) {
 	throw createError({
 		statusCode: 400,
-		statusMessage: "Date is older than 25 days or in the future",
+		statusMessage: `Date older than 25 days or in the future: ${_paramsDate}`,
 	});
 }
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Global from "~/components/Layout/Global.vue";
+
 useHead({
 	titleTemplate: (title) => (title ? `${title} - News Fusion` : "News Fusion"),
 	meta: [
@@ -28,13 +30,7 @@ html {
 <template>
   <NuxtRouteAnnouncer/>
   <NuxtLoadingIndicator/>
-  <NuxtLayout>
-    <div class="root-container font-sans">
-      <Header/>
-      <main class="padding-container flex flex-1 flex-col">
-        <NuxtPage/>
-      </main>
-      <Footer/>
-    </div>
-  </NuxtLayout>
+  <Global>
+    <NuxtPage/>
+  </Global>
 </template>
