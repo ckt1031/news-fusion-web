@@ -10,7 +10,6 @@ export default defineNuxtConfig({
 		"~/components/Layout",
 		"~/components/NuxtUI",
 	],
-	publicPath: "/assets/",
 	modules: [
 		"@nuxt/ui",
 		"@nuxt/fonts",
@@ -37,6 +36,7 @@ export default defineNuxtConfig({
 		},
 	},
 	app: {
+		buildAssetsDir: "/assets/",
 		head: {
 			htmlAttrs: {
 				lang: "en",
