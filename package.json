@@ -9,7 +9,8 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"format": "biome format --write .",
-		"lint": "nuxt typecheck && biome check --write ."
+		"lint:fix": "nuxt typecheck && biome check --write .",
+		"lint": "nuxt typecheck && biome lint ."
 	},
 	"dependencies": {
 		"@nuxtjs/robots": "5.1.1",

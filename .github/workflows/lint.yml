@@ -1,0 +1,32 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+      - dev
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  build:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: 22
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run lint
