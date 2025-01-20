@@ -57,7 +57,7 @@ const result = computed(() => {
         </p>
         <div class="flex flex-row gap-2">
           <UInput
-              icon="i-heroicons-magnifying-glass-20-solid"
+              icon="i-hugeicons-search-01"
               size="sm"
               color="white"
               :trailing="false"

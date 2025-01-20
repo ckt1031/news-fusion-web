@@ -44,7 +44,7 @@ const onDateChange = (newDate: Date) => {
 
 <template>
   <UPopover :popper="{ placement: 'bottom-start' }">
-    <UButton icon="i-heroicons-calendar-days-20-solid" :label="format(date, 'd MMM, yyy')"/>
+    <UButton icon="i-hugeicons-calendar-01" :label="format(date, 'd MMM, yyy')"/>
     <template #panel="{ close }">
       <DatePicker v-model="date" is-required @close="close" @dateChange="onDateChange"/>
     </template>

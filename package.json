@@ -13,6 +13,7 @@
 		"lint": "nuxt typecheck && biome lint ."
 	},
 	"dependencies": {
+		"@iconify-json/hugeicons": "^1.2.3",
 		"@nuxtjs/robots": "5.1.1",
 		"@nuxtjs/sitemap": "7.0.2",
 		"clsx": "^2.1.1",
