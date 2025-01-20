@@ -1,35 +1,38 @@
 import { z } from "zod";
 
-export const AtomFeedSchema = z.object({
-	feed: z.object({
-		entry: z
+const AtomFeedEntrySchema = z
+	.object({
+		id: z.string(),
+		title: z.string(),
+		updated: z.string().transform((date) => new Date(date).toISOString()),
+		content: z.string(),
+		link: z.object({
+			"@_href": z.string(),
+		}),
+		author: z.object({
+			name: z.string(),
+		}),
+		"media:group": z
 			.object({
-				id: z.string(),
-				title: z.string(),
-				updated: z.string().transform((date) => new Date(date).toISOString()),
-				content: z.string(),
-				link: z.object({
-					"@_href": z.string(),
-				}),
-				author: z.object({
-					name: z.string(),
-				}),
-				"media:group": z
+				"media:content": z
 					.object({
-						"media:content": z
-							.object({
-								"@_url": z.string(),
-							})
-							.optional(),
+						"@_url": z.string(),
 					})
 					.optional(),
 			})
-			.transform(({ "media:group": mediaGroup, ...d }) => ({
-				...d,
-				link: d.link["@_href"],
-				thumbnail: mediaGroup?.["media:content"]?.["@_url"],
-			}))
-			.array()
+			.optional(),
+	})
+	.transform(({ "media:group": mediaGroup, ...d }) => ({
+		...d,
+		link: d.link["@_href"],
+		thumbnail: mediaGroup?.["media:content"]?.["@_url"],
+	}));
+
+export const AtomFeedSchema = z.object({
+	feed: z.object({
+		entry: AtomFeedEntrySchema.or(z.array(AtomFeedEntrySchema))
+			// If it is an object, it means there is only one entry, transform it to an array of one entry
+			.transform((entry) => (Array.isArray(entry) ? entry : [entry]))
 			.optional(),
 	}),
 });
@@ -41,9 +44,7 @@ interface Error {
 type NonNullable<T> = Exclude<T, null | undefined>;
 
 export type AtomFeed = z.infer<typeof AtomFeedSchema> & Error;
-export type AtomFeedSingleEntry = NonNullable<
-	AtomFeed["feed"]["entry"]
->[number];
+export type AtomFeedSingleEntry = z.infer<typeof AtomFeedEntrySchema>;
 
 export interface ImmTranPageRule {
 	excludeMatches?: string | string[]; // Exclude specific websites.
