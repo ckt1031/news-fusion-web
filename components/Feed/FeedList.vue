@@ -16,9 +16,8 @@ const result = computed(() => {
 	const entries = (data?.value?.feed?.entry ?? []) as AtomFeedSingleEntry[];
 
 	const fuse = new Fuse(entries, {
-		threshold: 0.3,
-		keys: ["id", "title", "content", "link"],
-		includeScore: true,
+		threshold: 0.5,
+		keys: ["title", "content", "link", "author.name"],
 		includeMatches: true,
 	});
 
