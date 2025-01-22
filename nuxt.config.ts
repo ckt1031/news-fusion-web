@@ -67,9 +67,9 @@ export default defineNuxtConfig({
 	},
 	nitro: {
 		compressPublicAssets: true,
-        prerender: {
-            autoSubfolderIndex: false,
-        },
+		prerender: {
+			autoSubfolderIndex: false,
+		},
 	},
 	site: {
 		indexable: false,
