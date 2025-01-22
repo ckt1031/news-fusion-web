@@ -51,4 +51,8 @@ export const allowedCategories = [
 		name: "Software",
 		value: "software",
 	},
+	{
+		name: "YouTube",
+		value: "youtube",
+	},
 ];

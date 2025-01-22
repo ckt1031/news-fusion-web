@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import getYouTubeID from "get-youtube-id";
+import FeedYouTubePlayer from "~/components/Feed/Item/FeedYouTubePlayer.vue";
 import type { AtomFeedSingleEntry } from "~/lib/types";
 
 const props = defineProps<{
 	entry: AtomFeedSingleEntry;
 }>();
+
+const link = props.entry.link;
+const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
 </script>
 
 <template>
@@ -17,7 +22,10 @@ const props = defineProps<{
            md:prose-lg lg:prose-xl
            dark:prose-invert prose-neutral markdown-style max-w-full"
   />
-  <FeedThumbnail :image-url="props.entry.thumbnail" v-if="props.entry.thumbnail"/>
+  <div class="mt-4 mb-2">
+    <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>
+    <FeedThumbnail v-else :image-url="props.entry.thumbnail" v-if="props.entry.thumbnail"/>
+  </div>
   <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-3">
     <FeedPublisher :url="props.entry.id" :name="props.entry.author.name"/>
     <FeedReadMore :link="props.entry.link"/>

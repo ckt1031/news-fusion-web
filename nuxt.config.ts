@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 		"nuxt-shiki",
 		"@nuxtjs/sitemap",
 		"@nuxtjs/robots",
+		"@nuxt/icon",
 	],
 	devtools: { enabled: true },
 	fonts: {
@@ -76,5 +77,10 @@ export default defineNuxtConfig({
 		blockNonSeoBots: true,
 		blockAiBots: true,
 		disallow: ["/"],
+	},
+	icon: {
+		serverBundle: {
+			collections: ["hugeicons", "tabler"],
+		},
 	},
 });

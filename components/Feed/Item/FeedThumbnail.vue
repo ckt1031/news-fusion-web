@@ -13,6 +13,6 @@ const proxiedImageURL = `/api/image?href=${encodeURIComponent(props.imageUrl)}`;
 <template>
   <picture>
     <source :srcset="props.imageUrl" type="image/jpg">
-    <img :src="proxiedImageURL" class="mt-4 mb-2 rounded max-h-32 md:max-h-64" alt="Thumbnail"/>
+    <img :src="proxiedImageURL" class="rounded max-h-32 md:max-h-64" alt="Thumbnail"/>
   </picture>
 </template>
