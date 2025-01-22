@@ -13,6 +13,7 @@
 		"lint": "nuxt typecheck && biome lint ."
 	},
 	"dependencies": {
+		"@iconify-json/heroicons": "^1.2.2",
 		"@iconify-json/hugeicons": "^1.2.3",
 		"@iconify-json/tabler": "^1.2.14",
 		"@nuxt/icon": "1.10.3",

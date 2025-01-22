@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <LazyScriptYouTubePlayer :video-id="props.videoId" :width="640" :height="360" class="rounded-lg aspect-video">
+  <LazyScriptYouTubePlayer :video-id="props.videoId" :width="544" :height="306" class="rounded-lg aspect-video">
     <template #placeholder="{ placeholder }">
       <img :src="placeholder" :alt="`YouTube Video ${props.videoId}`" class="object-cover w-full h-full rounded"/>
     </template>

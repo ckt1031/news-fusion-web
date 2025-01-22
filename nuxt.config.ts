@@ -83,7 +83,7 @@ export default defineNuxtConfig({
 	},
 	icon: {
 		serverBundle: {
-			collections: ["hugeicons", "tabler"],
+			collections: ["heroicons", "hugeicons", "tabler"],
 		},
 	},
 });
