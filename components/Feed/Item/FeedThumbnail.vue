@@ -4,6 +4,19 @@ const props = defineProps<{
 }>();
 
 const proxiedImageURL = `/api/image?href=${encodeURIComponent(props.imageUrl)}`;
+
+const visibleRef = ref(false);
+const indexRef = ref(0);
+
+const image_list = [proxiedImageURL];
+
+const showImg = (index: number) => {
+	indexRef.value = index;
+	visibleRef.value = true;
+};
+const onHide = () => {
+	visibleRef.value = false;
+};
 </script>
 
 <style scoped>
@@ -13,6 +26,16 @@ const proxiedImageURL = `/api/image?href=${encodeURIComponent(props.imageUrl)}`;
 <template>
   <picture>
     <source :srcset="props.imageUrl" type="image/jpg">
-    <img :src="proxiedImageURL" class="rounded max-h-[306px]" alt="Thumbnail"/>
+    <img
+        :src="proxiedImageURL"
+        class="pic rounded max-h-[306px] cursor-pointer" alt="Thumbnail"
+        @click="() => showImg(0)"
+    />
   </picture>
+  <VueEasyLightbox
+      :visible="visibleRef"
+      :imgs="image_list"
+      :index="indexRef"
+      @hide="onHide"
+  />
 </template>

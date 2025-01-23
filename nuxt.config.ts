@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/sitemap",
 		"@nuxtjs/robots",
 		"@nuxt/icon",
+		"nuxt-easy-lightbox",
 	],
 	devtools: { enabled: true },
 	fonts: {
