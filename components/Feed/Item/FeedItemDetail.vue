@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import getYouTubeID from "get-youtube-id";
-import FeedYouTubePlayer from "~/components/Feed/Item/FeedYouTubePlayer.vue";
 import type { AtomFeedSingleEntry } from "~/lib/types";
 
 const props = defineProps<{
