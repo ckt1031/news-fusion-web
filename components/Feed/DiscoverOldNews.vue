@@ -12,6 +12,15 @@ const { data, status } = useLazyFetch<OldNewsDiscoveryResponse>(
 		query: { date, category },
 	},
 );
+
+const router = useRouter();
+const replaceURL = (_date: string) => {
+	// If the quote does not end with YYYY-MM-DD, replace browser q
+	if (!/\/\d{4}-\d{2}-\d{2}$/.test(window.location.pathname)) {
+		const pathname = `/category/${category}/${_date}`;
+		router.replace(pathname);
+	}
+};
 </script>
 
 <style scoped>
@@ -30,7 +39,7 @@ const { data, status } = useLazyFetch<OldNewsDiscoveryResponse>(
     </div>
     <div v-else-if="data?.hasNews" class="box flex flex-col sm:flex-row gap-2">
       View old news:
-      <NuxtLink :to="{ params: { date: data.date } }" class="nav-link">
+      <NuxtLink :to="{ params: { date: data.date } }" class="nav-link" @click="replaceURL(data.date)">
         {{ data.date }}
         <UIcon name="i-hugeicons-arrow-right-double" class="w-5 h-5"/>
       </NuxtLink>
