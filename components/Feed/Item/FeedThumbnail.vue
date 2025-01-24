@@ -28,7 +28,7 @@ const onHide = () => {
     <source :srcset="props.imageUrl" type="image/jpg">
     <img
         :src="proxiedImageURL"
-        class="pic rounded max-h-[306px] cursor-pointer" alt="Thumbnail"
+        class="pic rounded-md max-h-[306px] cursor-zoom-in" alt="Thumbnail"
         @click="() => showImg(0)"
     />
   </picture>
