@@ -7,7 +7,7 @@ export default (<Partial<Config>>{
 	theme: {
 		extend: {
 			colors: {
-				gray: colors.neutral,
+				gray: colors.zinc,
 				primary: colors.blue,
 			},
 			fontFamily: {

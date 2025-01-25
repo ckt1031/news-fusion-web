@@ -19,7 +19,7 @@ html {
 }
 
 .root-container {
-  @apply subpixel-antialiased bg-neutral-50 dark:bg-neutral-900 flex h-screen flex-col justify-between overflow-x-hidden;
+  @apply subpixel-antialiased bg-gray-50 dark:bg-gray-900 flex h-screen flex-col justify-between overflow-x-hidden;
 }
 
 .padding-container {

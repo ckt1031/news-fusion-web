@@ -9,12 +9,12 @@ const setPref = (pref: string) => {
 };
 const buttonClass = "p-1.5";
 const selectedClass =
-	"text-black dark:text-white bg-neutral-100 dark:bg-neutral-800 rounded-full border border-neutral-300 dark:border-neutral-700";
+	"text-black dark:text-white bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-700";
 </script>
 
 <template>
   <div class="flex items-center gap-2">
-    <div class="items-center rounded-full border border-neutral-300 dark:border-neutral-700">
+    <div class="items-center rounded-full border border-gray-300 dark:border-gray-700">
       <div class="flex flex-row gap-0.5 p-1">
         <UTooltip text="Change to System Theme">
           <UButton

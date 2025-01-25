@@ -19,7 +19,7 @@ const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
            prose-code:font-mono
            prose-code:before:content-none prose-code:after:content-none
            md:prose-lg lg:prose-xl
-           dark:prose-invert prose-neutral markdown-style max-w-full"
+           dark:prose-invert prose-gray markdown-style max-w-full"
   />
   <div class="mt-4 mb-2">
     <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>

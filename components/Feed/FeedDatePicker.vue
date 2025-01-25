@@ -3,33 +3,35 @@ import { format } from "date-fns";
 import dayjs from "dayjs";
 
 // Get query params
-const route = useRoute();
+const { params } = useRoute();
 // YYYY-MM-DD
-const _paramsDate = route.params.date as string | undefined;
-const _paramsCategory =
-	(route.params.category as string | undefined) || "world";
-const queryDate = _paramsDate ?? dayjs().format("YYYY-MM-DD");
+const paramsDate = params.date as string | undefined;
+const paramsCategory = (params.category as string | undefined) || "world";
+const queryDate = paramsDate ?? dayjs().format("YYYY-MM-DD");
 
 const date = ref(dayjs(queryDate).toDate());
 
 const router = useRouter();
 
 const onDateChange = (newDate: Date) => {
-	if (dayjs(newDate).isAfter(dayjs())) {
+	const nowDayJS = dayjs();
+	const newDateDayJS = dayjs(newDate);
+
+	if (newDateDayJS.isAfter(nowDayJS)) {
 		// set date to today
-		date.value = dayjs().toDate();
+		date.value = nowDayJS.toDate();
 		alert("Cannot select future date");
 		return;
 	}
 
 	// If the date selected is older than 25 days, return
-	if (dayjs(newDate).isBefore(dayjs().subtract(25, "days"))) {
-		date.value = dayjs().toDate();
+	if (newDateDayJS.isBefore(nowDayJS.subtract(25, "days"))) {
+		date.value = nowDayJS.toDate();
 		alert("Cannot select date older than 25 days");
 		return;
 	}
 
-	const newQueryDate = dayjs(newDate).format("YYYY-MM-DD").toString();
+	const newQueryDate = newDateDayJS.format("YYYY-MM-DD").toString();
 
 	const reg = /\/\d{4}-\d{2}-\d{2}/;
 
@@ -38,7 +40,9 @@ const onDateChange = (newDate: Date) => {
 		return;
 	}
 
-	router.replace(`/category/${_paramsCategory}/${newQueryDate}`);
+	const url = `/category/${paramsCategory}/${newQueryDate}`;
+	router.replace(url);
+	history.pushState({}, "", url); // Write to history to enable back button
 };
 </script>
 

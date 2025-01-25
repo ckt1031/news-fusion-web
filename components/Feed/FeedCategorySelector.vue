@@ -21,7 +21,6 @@ const onChange = (value: string) => {
 
 <template>
   <div class="flex flex-row items-center gap-2">
-    <p>Category:</p>
     <USelect
         v-if="allowedCategories && selectedCategory"
         v-model="selectedCategory"
