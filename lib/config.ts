@@ -40,10 +40,6 @@ export const allowedCategories = [
 		value: "dev-to",
 	},
 	{
-		name: "V2EX",
-		value: "v2ex",
-	},
-	{
 		name: "Free Games",
 		value: "free-games",
 	},
