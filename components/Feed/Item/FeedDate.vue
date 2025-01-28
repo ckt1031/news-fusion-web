@@ -7,16 +7,14 @@ const props = defineProps<{
 }>();
 
 const dateObject = dayjs(props.dateIso);
-const dateString = dateObject.format("MMMM D, YYYY - HH:mm");
+const dateString = dateObject.format("MMM D, YYYY - HH:mm");
 const dateAgo = sAgo(dateObject.toDate());
 </script>
 
 <template>
-  <UTooltip :text="dateAgo" :popper="{ placement: 'right', arrow: true }">
-    <p class="text-zinc-500 dark:text-zinc-400nt- non-conteclass">
-      {{ dateString }}
-    </p>
-  </UTooltip>
+  <p class="text-zinc-500 dark:text-zinc-400 non-content-class">
+    {{ dateString }} <span class="text-zinc-500">({{ dateAgo }})</span>
+  </p>
 </template>
 
 <style scoped>
