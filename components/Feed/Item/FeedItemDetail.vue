@@ -10,16 +10,17 @@ const link = props.entry.link;
 const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
 </script>
 
+
 <template>
   <FeedDate :date-iso="props.entry.updated"/>
   <MDC
       :value="props.entry.content"
-      class="is-content group text-zinc-600 dark:text-zinc-400 mt-2 font-summary prose
-           prose-code:bg-zinc-300 dark:prose-code:bg-zinc-800 prose-code:rounded prose-code:p-1
-           prose-code:font-mono
-           prose-code:before:content-none prose-code:after:content-none
-           md:prose-lg lg:prose-xl
-           dark:prose-invert prose-gray markdown-style max-w-full"
+      class="is-content group text-zinc-600 dark:text-zinc-400 mt-2 font-summary prose 
+      prose-code:bg-zinc-300 dark:prose-code:bg-zinc-800 prose-code:rounded prose-code:p-1
+      prose-code:font-mono
+      prose-code:before:content-none prose-code:after:content-none
+      md:prose-lg lg:prose-xl
+      dark:prose-invert prose-gray markdown-style max-w-full"
   />
   <div class="mt-4 mb-2">
     <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>
@@ -28,6 +29,7 @@ const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
   <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-3">
     <FeedPublisher :url="props.entry.id" :name="props.entry.author.name"/>
     <FeedReadMore :link="props.entry.link"/>
+    <FeedCopy :title="props.entry.title" :summary="props.entry.content" :link="props.entry.link"/>
   </div>
 </template>
 
