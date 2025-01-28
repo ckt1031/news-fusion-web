@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { format } from "date-fns";
+import {
+	CalendarDate,
+	DateFormatter,
+	type DateValue,
+	getLocalTimeZone,
+} from "@internationalized/date";
 import dayjs from "dayjs";
 
 // Get query params
@@ -9,24 +14,40 @@ const paramsDate = params.date as string | undefined;
 const paramsCategory = (params.category as string | undefined) || "world";
 const queryDate = paramsDate ?? dayjs().format("YYYY-MM-DD");
 
-const date = ref(dayjs(queryDate).toDate());
+const date = dayjs(queryDate).toDate();
 
 const router = useRouter();
 
-const onDateChange = (newDate: Date) => {
+const df = new DateFormatter("en-US", {
+	dateStyle: "medium",
+});
+
+const modelValue = shallowRef(
+	new CalendarDate(date.getFullYear(), date.getMonth(), date.getDate()),
+);
+
+const onDateChange = (newDate: DateValue) => {
 	const nowDayJS = dayjs();
-	const newDateDayJS = dayjs(newDate);
+	const newDateDayJS = dayjs(newDate.toDate(getLocalTimeZone()));
 
 	if (newDateDayJS.isAfter(nowDayJS)) {
 		// set date to today
-		date.value = nowDayJS.toDate();
+		modelValue.value = new CalendarDate(
+			nowDayJS.year(),
+			nowDayJS.month(),
+			nowDayJS.date(),
+		);
 		alert("Cannot select future date");
 		return;
 	}
 
 	// If the date selected is older than 25 days, return
 	if (newDateDayJS.isBefore(nowDayJS.subtract(25, "days"))) {
-		date.value = nowDayJS.toDate();
+		modelValue.value = new CalendarDate(
+			nowDayJS.year(),
+			nowDayJS.month(),
+			nowDayJS.date(),
+		);
 		alert("Cannot select date older than 25 days");
 		return;
 	}
@@ -47,10 +68,13 @@ const onDateChange = (newDate: Date) => {
 </script>
 
 <template>
-  <UPopover :popper="{ placement: 'bottom-start' }">
-    <UButton icon="i-hugeicons-calendar-01" :label="format(date, 'd MMM, yyy')"/>
-    <template #panel="{ close }">
-      <DatePicker v-model="date" is-required @close="close" @dateChange="onDateChange"/>
-    </template>
-  </UPopover>
+	<UPopover>
+	<UButton color="info" variant="subtle" icon="i-lucide-calendar">
+		{{ df.format(modelValue.toDate(getLocalTimeZone())) }}
+	</UButton>
+
+	<template #content>
+		<UCalendar v-model="modelValue" class="p-2" @update:modelValue="onDateChange" />
+	</template>
+	</UPopover>
 </template>

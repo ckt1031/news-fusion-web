@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@plugin "@tailwindcss/typography";
+/* @custom-variant dark (&:where([class=dark], [class=dark] *)); */
+
+@theme {
+	--font-sans: "Inter", "Noto Sans TC", "Noto Sans SC", system-ui, sans-serif;
+	--font-mono: "Geist Mono", "Consolas", "monospace";
+	--font-summary: "LXGW WenKai Mono TC", system-ui, sans-serif;
+}
+
+.root-container {
+	@apply subpixel-antialiased bg-zinc-50 dark:bg-zinc-900 flex h-screen flex-col justify-between overflow-x-hidden;
+}
+
+.padding-container {
+	@apply w-full max-w-[1000px] px-5 m-auto;
+}

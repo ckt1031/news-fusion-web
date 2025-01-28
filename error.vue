@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Global from "~/components/Layout/Global.vue";
 import type { NuxtError } from "#app";
 
 const props = defineProps({
@@ -26,7 +25,7 @@ useHead({ title });
   <Global>
     <div class="h-full flex flex-col items-center justify-center text-white">
       <div v-if="error" class="flex flex-col md:flex-row items-center gap-5 md:gap-10">
-        <div class="md:border-r-2 border-gray-700 h-full flex flex-col items-center justify-center">
+        <div class="md:border-r-2 border-zinc-700 h-full flex flex-col items-center justify-center">
           <h2 class="text-7xl font-bold md:mr-10 justify-self-center">{{ error.statusCode }}</h2>
         </div>
         <div class="flex flex-col gap-2 md:text-lg">
@@ -38,7 +37,7 @@ useHead({ title });
             {{ error.message }}
           </code>
           <button @click="handleError"
-                  class="mt-4 bg-gray-900 border border-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
+                  class="mt-4 bg-zinc-900 border border-zinc-700 px-4 py-2 rounded-md hover:bg-zinc-800 transition-colors">
             Back to Home
           </button>
         </div>

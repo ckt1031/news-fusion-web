@@ -23,8 +23,8 @@ If you have separately installed it's extension, you can use apply the configura
     ],
     "translationClasses": [
       "py-1",
-      "text-gray-700",
-      "dark:text-gray-400"
+      "text-zinc-700",
+      "dark:text-zinc-400"
     ]
   }
 ]

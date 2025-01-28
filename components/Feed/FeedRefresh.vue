@@ -8,11 +8,12 @@ const props = defineProps<{
   <UTooltip text="Refresh Feed">
     <UButton
         icon="i-hugeicons-arrow-reload-horizontal"
-        size="sm"
-        color="primary"
+        label="Reload"
+        color="neutral"
         variant="outline"
         title="Refresh Feed"
         @click="props.refresh"
+        :ui="{ label: 'hidden sm:block' }"
     />
   </UTooltip>
 </template>

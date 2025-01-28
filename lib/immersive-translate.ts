@@ -14,7 +14,7 @@ export const immersiveTranslateConfig: Parameters<InitImmersiveTranslateOptions>
 				"head",
 				"title",
 			],
-			translationClasses: ["py-1", "text-gray-700", "dark:text-gray-400"],
+			translationClasses: ["py-1", "text-zinc-700", "dark:text-zinc-400"],
 		},
 	};
 

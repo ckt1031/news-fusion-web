@@ -1,58 +1,58 @@
 export const allowedCategories = [
 	{
-		name: "World",
+		label: "World",
 		value: "world",
 	},
 	{
-		name: "Technology",
+		label: "Technology",
 		value: "technology",
 	},
 	{
-		name: "Artificial Intelligence",
+		label: "Artificial Intelligence",
 		value: "ai",
 	},
 	{
-		name: "Hong Kong",
+		label: "Hong Kong",
 		value: "hong-kong",
 	},
 	{
-		name: "Finance",
+		label: "Finance",
 		value: "finance",
 	},
 	{
-		name: "Investing",
+		label: "Investing",
 		value: "investing",
 	},
 	{
-		name: "Developer",
+		label: "Developer",
 		value: "dev",
 	},
 	{
-		name: "Hacker News",
+		label: "Hacker News",
 		value: "hacker-news",
 	},
 	{
-		name: "Lobste.rs",
+		label: "Lobste.rs",
 		value: "lobste-rs",
 	},
 	{
-		name: "Dev.to",
+		label: "Dev.to",
 		value: "dev-to",
 	},
 	{
-		name: "Free Games",
+		label: "Free Games",
 		value: "free-games",
 	},
 	{
-		name: "Magazine",
+		label: "Magazine",
 		value: "magazine",
 	},
 	{
-		name: "Software",
+		label: "Software",
 		value: "software",
 	},
 	{
-		name: "YouTube",
+		label: "YouTube",
 		value: "youtube",
 	},
 ];

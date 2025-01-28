@@ -5,7 +5,7 @@
 <template>
   <footer class="flex flex-col justify-center items-center gap-3 mt-8 mb-5">
     <div
-        class="flex justify-center items-center flex-row text-gray-500 dark:text-gray-400 gap-3"
+        class="flex justify-center items-center flex-row text-zinc-500 dark:text-zinc-400 gap-3"
     >
         <a href="/about">
           About

@@ -5,12 +5,15 @@ const route = useRoute();
 const category = route.params.category as string | null; // Get the category from the route
 
 const selectedCategory = ref<string | null>(
-	category ?? allowedCategories[0].value,
+	// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	category ?? allowedCategories[0]!.value,
 ); // Set the first category as the selected category
 
 const router = useRouter();
 
-const onChange = (value: string) => {
+const onChange = (value: string | number | boolean | null) => {
+	if (typeof value !== "string") return;
+
 	selectedCategory.value = value;
 	router.push({ path: `/category/${value}` });
 };
@@ -24,10 +27,13 @@ const onChange = (value: string) => {
     <USelect
         v-if="allowedCategories && selectedCategory"
         v-model="selectedCategory"
-        option-attribute="name"
-        :options="allowedCategories"
-        @change="onChange"
+        :items="allowedCategories"
+        @update:modelValue="onChange"
         title="Select a category"
+        class="w-48"
+        color="primary"
+        variant="subtle"
+        highlight
     />
   </div>
 </template>

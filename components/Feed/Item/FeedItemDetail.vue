@@ -14,8 +14,8 @@ const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
   <FeedDate :date-iso="props.entry.updated"/>
   <MDC
       :value="props.entry.content"
-      class="is-content group text-gray-600 dark:text-gray-400 mt-2 font-summary prose
-           prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded prose-code:p-1
+      class="is-content group text-zinc-600 dark:text-zinc-400 mt-2 font-summary prose
+           prose-code:bg-zinc-300 dark:prose-code:bg-zinc-800 prose-code:rounded prose-code:p-1
            prose-code:font-mono
            prose-code:before:content-none prose-code:after:content-none
            md:prose-lg lg:prose-xl

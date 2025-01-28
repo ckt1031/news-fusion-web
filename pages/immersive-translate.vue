@@ -35,7 +35,7 @@ useHead({
     <h1 class="text-2xl font-bold">
       Immersive Translate
     </h1>
-    <p class="text-gray-600 dark:text-gray-400 is-content">
+    <p class="text-zinc-600 dark:text-zinc-400 is-content">
       We have integrated the Immersive Translate to enable splitted translation of the content.
       SDK is automatically loaded and initialized when the page is loaded.
       If you have separately installed it's extension, you can use apply the configuration in developer settings.
@@ -48,7 +48,7 @@ useHead({
     <UButton
         icon="i-hugeicons-copy-01"
         size="md"
-        color="primary"
+        color="neutral"
         variant="outline"
         label="Copy to clipboard"
         title="Copy to clipboard"

@@ -9,7 +9,7 @@ const url = `https://www.google.com/s2/favicons?domain=${props.url}&sz=64`;
 <template>
   <div class="flex flex-row items-center gap-1">
     <img class="w-4 h-4" alt="favicon" :src="url"/>
-    <span class="text-gray-500 dark:text-gray-400">{{ props.name }}</span>
+    <span class="text-zinc-500 dark:text-zinc-400">{{ props.name }}</span>
   </div>
 </template>
 

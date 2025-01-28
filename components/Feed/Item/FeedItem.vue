@@ -13,8 +13,10 @@ const onClick = () => {
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .markdown-style code {
-  @apply font-mono text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg;
+  @apply font-mono text-sm text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 p-0.5 rounded-lg;
 }
 
 .markdown-style h1 {
@@ -52,8 +54,8 @@ const onClick = () => {
 
 <template>
   <div class="flex flex-col">
-    <button class="text-left" @click="onClick">
-      <span class="text-gray-700 dark:text-gray-300 font-medium is-content">
+    <button class="text-left cursor-pointer" @click="onClick">
+      <span class="text-zinc-700 dark:text-zinc-300 font-medium is-content">
         {{ props.entry.title }}
       </span>
     </button>

@@ -13,7 +13,7 @@ const dateAgo = sAgo(dateObject.toDate());
 
 <template>
   <UTooltip :text="dateAgo" :popper="{ placement: 'right', arrow: true }">
-    <p class="text-gray-500 dark:text-gray-400nt- non-conteclass">
+    <p class="text-zinc-500 dark:text-zinc-400nt- non-conteclass">
       {{ dateString }}
     </p>
   </UTooltip>

@@ -1,8 +1,9 @@
-import removeConsole from "vite-plugin-remove-console";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
+	future: {
+		compatibilityVersion: 4,
+	},
 	components: [
 		"~/components",
 		"~/components/Feed",
@@ -12,33 +13,22 @@ export default defineNuxtConfig({
 	],
 	modules: [
 		"@nuxt/ui",
-		"@nuxt/fonts",
 		"@nuxtjs/mdc",
 		"@nuxt/scripts",
-		"nuxt-shiki",
-		"@nuxtjs/sitemap",
 		"@nuxtjs/robots",
+		"@nuxtjs/sitemap",
 		"@nuxt/icon",
+		"nuxt-shiki",
 		"nuxt-easy-lightbox",
 	],
 	devtools: { enabled: true },
-	fonts: {
-		provider: "google",
-	},
-	ui: {
-		global: true,
-	},
-	vite: {
-		// Options for Vite plugin
-		plugins: [removeConsole()],
-	},
+	css: ["~/assets/css/main.css"],
 	scripts: {
 		defaultScriptOptions: {
 			bundle: true,
 		},
 	},
 	app: {
-		buildAssetsDir: "/assets/",
 		head: {
 			htmlAttrs: {
 				lang: "en",
@@ -67,7 +57,6 @@ export default defineNuxtConfig({
 		"/immersive-translate": { prerender: true },
 	},
 	nitro: {
-		compressPublicAssets: true,
 		prerender: {
 			autoSubfolderIndex: false,
 		},

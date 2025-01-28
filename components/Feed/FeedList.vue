@@ -28,6 +28,8 @@ const result = computed(() => {
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .state {
   @apply flex gap-1.5 justify-center items-center h-32
 }
@@ -51,14 +53,13 @@ const result = computed(() => {
         v-else-if="data != null && data.feed != null && data.feed.entry && data.feed.entry.length > 0"
     >
       <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-4">
-        <p class="text-gray-700 dark:text-gray-300 font-light">
+        <p class="text-zinc-700 dark:text-zinc-300 font-light">
           Total: {{ data.feed.entry.length }} articles
         </p>
         <div class="flex flex-row gap-2">
           <UInput
               icon="i-hugeicons-search-01"
-              size="sm"
-              color="white"
+              color="neutral"
               :trailing="false"
               placeholder="Search..."
               v-model="input"
@@ -66,7 +67,7 @@ const result = computed(() => {
           <FeedRefresh :refresh="refresh"/>
         </div>
       </div>
-      <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700" v-if="result.length > 0">
+      <div class="flex flex-col divide-y divide-zinc-300 dark:divide-zinc-700" v-if="result.length > 0">
         <div v-for="d in result" :key="d.id" class="py-2">
           <FeedItem :entry="d"/>
         </div>

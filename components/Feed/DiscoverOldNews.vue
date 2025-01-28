@@ -6,7 +6,7 @@ const { date, category } = defineProps<{
 	category: string;
 }>();
 
-const { data, status } = useLazyFetch<OldNewsDiscoveryResponse>(
+const { data, status, error } = useLazyFetch<OldNewsDiscoveryResponse>(
 	"/api/feed/old-news-discovery",
 	{
 		query: { date, category },
@@ -26,9 +26,10 @@ const replaceURL = (_date: string) => {
 </script>
 
 <style scoped>
-.box {
-  @apply border-2 md:border-4 border-indigo-500 dark:border-indigo-400 p-4 rounded-lg 
-  bg-indigo-50 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 flex flex-col items-center justify-center
+@reference "tailwindcss";
+
+.row {
+  @apply flex flex-row items-center justify-center gap-2;
 }
 .nav-link {
   @apply text-blue-500 dark:text-blue-400 flex flex-row gap-0.5 items-center
@@ -36,16 +37,31 @@ const replaceURL = (_date: string) => {
 </style>
 
 <template>
-    <div v-if="status === 'pending'" class="box">
-      <UIcon name="i-hugeicons-reload" class="w-5 h-5 animate-spin"/>
-      Checking previous dates
+  <UCard class="text-center">
+    <template #header>
+      <h3 class="text-md font-semibold">
+        Previous News
+      </h3>
+    </template>
+
+    <div v-if="status === 'pending'">
+      <div class="row">
+        <UIcon name="i-hugeicons-reload" class="w-5 h-5 animate-spin"/>
+        Checking previous dates
+      </div>
     </div>
-    <div v-else-if="data?.hasNews" class="box flex flex-col sm:flex-row gap-2">
-      Previous News Found
+    <div v-else-if="!data">
+      Error fetching previous news
+    </div>
+    <div v-else-if="error">
+      {{ error.message }}
+    </div>
+    <div v-else-if="data.hasNews">
       <NuxtLink :to="{ params: { date: data.date } }" class="nav-link" @click="replaceURL(data.date)">
         <UIcon name="i-hugeicons-arrow-right-double" class="w-5 h-5"/>
         {{ data.date }}
         <UIcon name="i-hugeicons-arrow-left-double" class="w-5 h-5"/>
       </NuxtLink>
     </div>
+  </UCard>
 </template>

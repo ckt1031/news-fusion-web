@@ -9,19 +9,19 @@ const setPref = (pref: string) => {
 };
 const buttonClass = "p-1.5";
 const selectedClass =
-	"text-black dark:text-white bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-700";
+	"text-black dark:text-white bg-zinc-100 dark:bg-zinc-800 rounded-full border border-zinc-300 dark:border-zinc-700";
 </script>
 
 <template>
   <div class="flex items-center gap-2">
-    <div class="items-center rounded-full border border-gray-300 dark:border-gray-700">
+    <div class="items-center rounded-full border border-zinc-300 dark:border-zinc-700">
       <div class="flex flex-row gap-0.5 p-1">
         <UTooltip text="Change to System Theme">
           <UButton
               icon="i-hugeicons-computer"
               size="xs"
               :padded="false"
-              color="gray"
+              color="neutral"
               variant="link"
               title="Auto Mode"
               :class="clsx(buttonClass, preference === 'system' ? selectedClass : '')"
@@ -33,7 +33,7 @@ const selectedClass =
               icon="i-hugeicons-bulb"
               size="xs"
               :padded="false"
-              color="gray"
+              color="neutral"
               variant="link"
               title="Light Mode"
               :class="clsx(buttonClass, preference === 'light' ? selectedClass : '')"
@@ -45,7 +45,7 @@ const selectedClass =
               icon="i-hugeicons-moon-02"
               size="xs"
               :padded="false"
-              color="gray"
+              color="neutral"
               variant="link"
               title="Dark Mode"
               :class="clsx(buttonClass, preference === 'dark' ? selectedClass : '')"

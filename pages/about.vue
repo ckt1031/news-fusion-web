@@ -15,7 +15,7 @@ useHead({
 </script>
 
 <template>
-  <article class="flex flex-col gap-3 text-gray-700 dark:text-gray-400 pt-4 mb-10">
+  <article class="flex flex-col gap-3 text-zinc-700 dark:text-zinc-400 pt-4 mb-10">
     <h1 class="text-2xl font-semibold mb-3 text-black dark:text-white">
       About...
     </h1>
