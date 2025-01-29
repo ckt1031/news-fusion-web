@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import clsx from "clsx";
 import getYouTubeID from "get-youtube-id";
 import type { AtomFeedSingleEntry } from "~/lib/types";
 
@@ -8,19 +9,35 @@ const props = defineProps<{
 
 const link = props.entry.link;
 const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
+
+const markdownCodeClass = clsx(
+	"prose-code:bg-zinc-200 dark:prose-code:bg-zinc-800",
+	"prose-code:rounded prose-code:p-1",
+	"prose-code:font-mono prose-code:font-light",
+	"prose-code:text-black dark:prose-code:text-zinc-300",
+	"prose-code:before:content-none prose-code:after:content-none",
+);
+
+const markdownClass = clsx(
+	"group",
+	"is-content",
+	"mt-2 font-summary",
+	"markdown-code",
+	"prose prose-zinc md:prose-lg lg:prose-xl dark:prose-invert",
+	"max-w-full",
+	"text-zinc-600 dark:text-zinc-400",
+	markdownCodeClass,
+);
 </script>
 
+<style scoped>
+</style>
 
 <template>
   <FeedDate :date-iso="props.entry.updated"/>
   <MDC
       :value="props.entry.content"
-      class="is-content group text-zinc-600 dark:text-zinc-400 mt-2 font-summary prose 
-      prose-code:bg-zinc-300 dark:prose-code:bg-zinc-800 prose-code:rounded prose-code:p-1
-      prose-code:font-mono
-      prose-code:before:content-none prose-code:after:content-none
-      md:prose-lg lg:prose-xl
-      dark:prose-invert prose-gray markdown-style max-w-full"
+      :class="markdownClass"
   />
   <div class="mt-4 mb-2">
     <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>
@@ -32,7 +49,3 @@ const videoId = link.includes("youtube.com") ? getYouTubeID(link) : null;
     <FeedCopy :title="props.entry.title" :summary="props.entry.content" :link="props.entry.link"/>
   </div>
 </template>
-
-<style scoped>
-
-</style>
