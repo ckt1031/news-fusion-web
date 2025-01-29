@@ -24,14 +24,11 @@ const onHide = () => {
 </style>
 
 <template>
-  <picture>
-    <source :srcset="props.imageUrl" type="image/jpg">
     <img
         :src="proxiedImageURL"
         class="pic rounded-md max-h-[306px] cursor-zoom-in" alt="Thumbnail"
         @click="() => showImg(0)"
     />
-  </picture>
   <VueEasyLightbox
       :visible="visibleRef"
       :imgs="image_list"
