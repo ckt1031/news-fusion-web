@@ -37,26 +37,16 @@ const replaceURL = (_date: string) => {
 </style>
 
 <template>
-  <UCard class="text-center">
+  <UCard class="text-center" v-if="data && data.hasNews">
     <template #header>
       <h3 class="text-md font-semibold">
-        Previous News
+        Tips
       </h3>
     </template>
-
-    <div v-if="status === 'pending'">
-      <div class="row">
-        <UIcon name="i-hugeicons-reload" class="w-5 h-5 animate-spin"/>
-        Checking previous dates
-      </div>
-    </div>
-    <div v-else-if="!data">
-      Error fetching previous news
-    </div>
-    <div v-else-if="error">
-      {{ error.message }}
-    </div>
-    <div v-else-if="data.hasNews">
+    <div class="flex flex-col items-center">
+      <p>
+        Discovered news on previous dates.
+      </p>
       <NuxtLink :to="{ params: { date: data.date } }" class="nav-link" @click="replaceURL(data.date)">
         <UIcon name="i-hugeicons-arrow-right-double" class="w-5 h-5"/>
         {{ data.date }}
