@@ -52,6 +52,18 @@ export const allowedCategories = [
 		value: "software",
 	},
 	{
+		label: "Programming Updates",
+		value: "programming-updates",
+	},
+	{
+		label: "Software Updates",
+		value: "software-updates",
+	},
+	{
+		label: "Blogs",
+		value: "blogs",
+	},
+	{
 		label: "YouTube",
 		value: "youtube",
 	},
