@@ -16,6 +16,9 @@ const queryDate = paramsDate ?? dayjs().format("YYYY-MM-DD");
 
 const date = dayjs(queryDate).toDate();
 
+console.log("date", date);
+console.log(date.getFullYear(), date.getMonth(), date.getDate());
+
 const router = useRouter();
 
 const df = new DateFormatter("en-US", {
@@ -23,7 +26,7 @@ const df = new DateFormatter("en-US", {
 });
 
 const modelValue = shallowRef(
-	new CalendarDate(date.getFullYear(), date.getMonth(), date.getDate()),
+	new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate()),
 );
 
 const onDateChange = (newDate: DateValue) => {
@@ -34,7 +37,7 @@ const onDateChange = (newDate: DateValue) => {
 		// set date to today
 		modelValue.value = new CalendarDate(
 			nowDayJS.year(),
-			nowDayJS.month(),
+			nowDayJS.month() + 1,
 			nowDayJS.date(),
 		);
 		alert("Cannot select future date");
@@ -45,7 +48,7 @@ const onDateChange = (newDate: DateValue) => {
 	if (newDateDayJS.isBefore(nowDayJS.subtract(25, "days"))) {
 		modelValue.value = new CalendarDate(
 			nowDayJS.year(),
-			nowDayJS.month(),
+			nowDayJS.month() + 1,
 			nowDayJS.date(),
 		);
 		alert("Cannot select date older than 25 days");
