@@ -30,12 +30,13 @@ const copyWhole = () => {
     <UPopover arrow>
         <UButton label="Copy Clipboard" color="neutral" variant="ghost" class="cursor-pointer" icon="i-hugeicons-copy-01"/>
         <template #content>
-            <div class="flex flex-col gap-1 p-2">
+            <div class="flex flex-col gap-1 p-2 w-36">
             <UButton 
                 label="Title"
                 color="neutral"
                 variant="ghost"
                 class="cursor-pointer"
+                icon="i-hugeicons-text"
                 @click="copyTitle"
             />
             <UButton 
@@ -43,6 +44,7 @@ const copyWhole = () => {
                 color="neutral"
                 variant="ghost"
                 class="cursor-pointer"
+                icon="i-hugeicons-text-centerline-left"
                 @click="copySummary"
             />
             <UButton 
@@ -50,13 +52,15 @@ const copyWhole = () => {
                 color="neutral"
                 variant="ghost"
                 class="cursor-pointer"
+                icon="i-hugeicons-link-01"
                 @click="copyLink"
             />
             <UButton 
-                label="Whole Text"
+                label="Whole"
                 color="neutral"
                 variant="ghost"
                 class="cursor-pointer"
+                icon="i-hugeicons-text-vertical-alignment"
                 @click="copyWhole"
             />
             </div>

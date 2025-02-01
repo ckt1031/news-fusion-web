@@ -43,8 +43,8 @@ const markdownClass = clsx(
     <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>
     <FeedThumbnail v-else :image-url="props.entry.thumbnail" v-if="props.entry.thumbnail"/>
   </div>
-  <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-3">
-    <FeedPublisher :url="props.entry.id" :name="props.entry.author.name"/>
+  <div class="flex flex-col sm:flex-row sm:items-center mt-3">
+    <FeedPublisher :url="props.entry.id" :name="props.entry.author.name" class="mb-1 sm:mb-0 sm:mr-1"/>
     <FeedReadMore :link="props.entry.link"/>
     <FeedCopy :title="props.entry.title" :summary="props.entry.content" :link="props.entry.link"/>
   </div>
