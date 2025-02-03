@@ -16,9 +16,6 @@ const queryDate = paramsDate ?? dayjs().format("YYYY-MM-DD");
 
 const date = dayjs(queryDate).toDate();
 
-console.log("date", date);
-console.log(date.getFullYear(), date.getMonth(), date.getDate());
-
 const router = useRouter();
 
 const df = new DateFormatter("en-US", {

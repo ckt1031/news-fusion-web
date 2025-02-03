@@ -12,7 +12,7 @@ const querySchema = z.object({
 });
 
 export async function getAtomFeed(url: string): Promise<AtomFeed> {
-	console.log(`Fetching feed from ${url}`);
+	// console.log(`Fetching feed from ${url}`);
 
 	// Fetch feed
 	const xml = await ofetch<string>(url, {

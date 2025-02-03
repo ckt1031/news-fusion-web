@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 	const queries = await getValidatedQuery(event, (q) => querySchema.parse(q));
 	const href = queries.href;
 
-	console.log(`Fetching image from ${href}`);
+	// console.log(`Fetching image from ${href}`);
 
 	// Fetch image
 	const image = await fetch(href);
