@@ -48,6 +48,10 @@ export const allowedCategories = [
 		value: "magazine",
 	},
 	{
+		label: "Technology Products",
+		value: "technology-products",
+	},
+	{
 		label: "Software",
 		value: "software",
 	},
