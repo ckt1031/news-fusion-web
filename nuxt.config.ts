@@ -11,7 +11,6 @@ export default defineNuxtConfig({
 		"~/components/Feed",
 		"~/components/Feed/Item",
 		"~/components/Layout",
-		"~/components/NuxtUI",
 	],
 	modules: [
 		"@nuxt/ui",
