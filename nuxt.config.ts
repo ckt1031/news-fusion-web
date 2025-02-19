@@ -80,4 +80,9 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [vitePluginRemoveConsole()],
 	},
+	typescript: {
+		tsConfig: {
+			exclude: ["node_modules", "dist"],
+		},
+	},
 });
