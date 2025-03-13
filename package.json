@@ -27,7 +27,9 @@
 		"nuxt-shiki": "0.3.0",
 		"ofetch": "^1.4.1",
 		"s-ago": "^2.2.0",
+		"tinyglobby": "^0.2.12",
 		"unenv": "^1.10.0",
+		"unimport": "^4.1.2",
 		"v-calendar": "next",
 		"vue": "^3.5.13",
 		"vue-router": "^4.5.0",
@@ -51,5 +53,9 @@
 		"vite-plugin-remove-console": "^2.2.0",
 		"vue-tsc": "^2.2.2",
 		"wrangler": "^3.109.3"
+	},
+	"overrides": {
+		"tinyglobby": "0.2.12",
+		"unimport": "4.1.2"
 	}
 }
