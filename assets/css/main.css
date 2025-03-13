@@ -2,12 +2,10 @@
 @import "@nuxt/ui";
 
 @plugin "@tailwindcss/typography";
-/* @custom-variant dark (&:where([class=dark], [class=dark] *)); */
 
 @theme {
 	--font-sans: "Public Sans", Arial, sans-serif;
-	--font-mono: "Consolas", "monospace";
-	--font-summary: "Noto Serif", Georgia, serif;
+	--font-mono: "Geist Mono", "Courier New", "monospace";
 }
 
 .root-container {

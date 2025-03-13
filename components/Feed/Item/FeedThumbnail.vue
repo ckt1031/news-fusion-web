@@ -26,13 +26,13 @@ const onHide = () => {
 <template>
     <img
         :src="proxiedImageURL"
-        class="pic rounded-md max-h-[306px] cursor-zoom-in" alt="Thumbnail"
+        class="pic rounded-md max-h-[200px] cursor-zoom-in" alt="Thumbnail"
         @click="() => showImg(0)"
     />
-  <VueEasyLightbox
-      :visible="visibleRef"
-      :imgs="image_list"
-      :index="indexRef"
-      @hide="onHide"
-  />
+    <VueEasyLightbox
+        :visible="visibleRef"
+        :imgs="image_list"
+        :index="indexRef"
+        @hide="onHide"
+    />
 </template>

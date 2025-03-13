@@ -18,7 +18,7 @@ const onClick = () => {
 <template>
   <div class="flex flex-col">
     <button class="text-left cursor-pointer" @click="onClick">
-      <span class="text-zinc-700 dark:text-zinc-300 font-medium is-content">
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium is-content">
         {{ props.entry.title }}
       </span>
     </button>
