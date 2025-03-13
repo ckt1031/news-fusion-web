@@ -15,7 +15,6 @@
 	"dependencies": {
 		"@nuxt/icon": "1.10.3",
 		"@nuxtjs/robots": "5.2.4",
-		"@nuxtjs/sitemap": "7.2.6",
 		"clsx": "^2.1.1",
 		"date-fns": "^4.1.0",
 		"dayjs": "^1.11.13",
@@ -24,7 +23,6 @@
 		"get-youtube-id": "^1.0.1",
 		"nuxt": "^3.15.4",
 		"nuxt-easy-lightbox": "1.0.2",
-		"nuxt-shiki": "0.3.0",
 		"ofetch": "^1.4.1",
 		"s-ago": "^2.2.0",
 		"tinyglobby": "^0.2.12",
@@ -50,7 +48,6 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"rehype-external-links": "^3.0.0",
 		"tailwindcss": "^4.0.13",
-		"vite-plugin-remove-console": "^2.2.0",
 		"vue-tsc": "^2.2.8",
 		"wrangler": "^3.114.1"
 	},

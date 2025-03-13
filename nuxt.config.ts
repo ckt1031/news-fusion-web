@@ -1,5 +1,3 @@
-import vitePluginRemoveConsole from "vite-plugin-remove-console";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
@@ -14,9 +12,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/mdc",
 		"@nuxt/scripts",
 		"@nuxtjs/robots",
-		"@nuxtjs/sitemap",
 		"@nuxt/icon",
-		"nuxt-shiki",
 		"nuxt-easy-lightbox",
 	],
 	devtools: { enabled: true },
@@ -33,9 +29,6 @@ export default defineNuxtConfig({
 			},
 			charset: "utf-8",
 		},
-	},
-	shiki: {
-		defaultTheme: "github-dark-default",
 	},
 	mdc: {
 		rehypePlugins: {
@@ -68,14 +61,6 @@ export default defineNuxtConfig({
 		blockNonSeoBots: true,
 		blockAiBots: true,
 		disallow: ["/"],
-	},
-	// icon: {
-	// 	serverBundle: {
-	// 		collections: ["heroicons", "hugeicons", "tabler"],
-	// 	},
-	// },
-	vite: {
-		plugins: [vitePluginRemoveConsole()],
 	},
 	typescript: {
 		tsConfig: {

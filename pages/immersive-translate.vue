@@ -40,11 +40,7 @@ useHead({
       SDK is automatically loaded and initialized when the page is loaded.
       If you have separately installed it's extension, you can use apply the configuration in developer settings.
     </p>
-    <Shiki
-        lang="json"
-        :code="JSON.stringify(config, null, 2)"
-        class="bg-[#0d1117] p-4 rounded-lg overflow-x-auto w-full font-mono"
-    />
+    <pre class="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg text-sm w-full">{{ JSON.stringify(config, null, 2) }}</pre>
     <UButton
         icon="i-hugeicons-copy-01"
         size="md"
