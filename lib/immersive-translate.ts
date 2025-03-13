@@ -30,6 +30,7 @@ export const loadImmersiveTranslate = () => {
 		{
 			src: "https://download.immersivetranslate.com/immersive-translate-sdk-latest.js",
 			async: true,
+			defer: true,
 		},
 		{
 			use() {

@@ -72,11 +72,11 @@ export default defineNuxtConfig({
 		blockAiBots: true,
 		disallow: ["/"],
 	},
-	icon: {
-		serverBundle: {
-			collections: ["heroicons", "hugeicons", "tabler"],
-		},
-	},
+	// icon: {
+	// 	serverBundle: {
+	// 		collections: ["heroicons", "hugeicons", "tabler"],
+	// 	},
+	// },
 	vite: {
 		plugins: [vitePluginRemoveConsole()],
 	},

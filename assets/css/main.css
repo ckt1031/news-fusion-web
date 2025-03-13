@@ -5,9 +5,9 @@
 /* @custom-variant dark (&:where([class=dark], [class=dark] *)); */
 
 @theme {
-	--font-sans: "Inter", "Noto Sans TC", "Noto Sans SC", Arial, sans-serif;
-	--font-mono: "Geist Mono", "Consolas", "monospace";
-	--font-summary: "LXGW WenKai Mono TC", Georgia, serif;
+	--font-sans: "Public Sans", Arial, sans-serif;
+	--font-mono: "Consolas", "monospace";
+	--font-summary: "Noto Serif", Georgia, serif;
 }
 
 .root-container {
