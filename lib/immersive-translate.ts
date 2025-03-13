@@ -3,18 +3,15 @@ import type { InitImmersiveTranslateOptions } from "~/lib/types";
 export const immersiveTranslateConfig: Parameters<InitImmersiveTranslateOptions>[0] =
 	{
 		pageRule: {
-			selectors: ["article", ".is-content"],
-			excludeSelectors: [".non-content-class"],
-			excludeTags: [
-				"header",
-				"footer",
-				"nav",
-				"script",
-				"style",
-				"head",
-				"title",
+			selectors: ['[translatable="true"]'],
+			excludeSelectors: ['[translatable="false"]'],
+			excludeTags: ["title"],
+			translationClasses: [
+				"border-l-2",
+				"border-blue-500",
+				"pl-2",
+				"font-translation",
 			],
-			translationClasses: ["py-1", "text-zinc-700", "dark:text-zinc-400"],
 		},
 	};
 

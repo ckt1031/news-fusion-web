@@ -20,7 +20,6 @@ const markdownCodeClass = clsx(
 
 const markdownClass = clsx(
 	"group",
-	"is-content",
 	"mt-2",
 	"markdown-code",
 	"prose prose-zinc dark:prose-invert",
@@ -39,11 +38,11 @@ const markdownClass = clsx(
       :value="props.entry.content"
       :class="markdownClass"
   />
-  <div class="mt-4 mb-2">
+  <div class="mt-4 mb-2" translatable="false">
     <LazyFeedYouTubePlayer :video-id="videoId" v-if="videoId"/>
     <FeedThumbnail v-else :image-url="props.entry.thumbnail" v-if="props.entry.thumbnail"/>
   </div>
-  <div class="flex flex-col sm:flex-row sm:items-center mt-3">
+  <div class="flex flex-col sm:flex-row sm:items-center mt-3" translatable="false">
     <FeedPublisher :url="props.entry.id" :name="props.entry.author.name" class="mb-1 sm:mb-0 sm:mr-1"/>
     <FeedReadMore :link="props.entry.link"/>
     <FeedCopy :title="props.entry.title" :summary="props.entry.content" :link="props.entry.link"/>

@@ -6,6 +6,7 @@
 @theme {
 	--font-sans: "Public Sans", Arial, sans-serif;
 	--font-mono: "Geist Mono", "Courier New", "monospace";
+	--font-translation: "Noto Serif SC", Arial, sans-serif;
 }
 
 .root-container {

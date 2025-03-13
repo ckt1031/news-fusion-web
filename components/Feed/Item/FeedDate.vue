@@ -12,7 +12,7 @@ const dateAgo = sAgo(dateObject.toDate());
 </script>
 
 <template>
-  <p class="text-zinc-500 dark:text-zinc-400 non-content-class">
+  <p class="text-zinc-500 dark:text-zinc-400" translatable="false">
     {{ dateString }} <span>({{ dateAgo }})</span>
   </p>
 </template>

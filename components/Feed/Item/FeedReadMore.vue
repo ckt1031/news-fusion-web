@@ -7,7 +7,7 @@ const props = defineProps<{
 <template>
   <UTooltip
       :text="props.link.length < 50 ? props.link : props.link.slice(0, 50) + '...'"
-      class="non-content-class"
+      translatable="false"
   >
     <UButton
       label="Read More"

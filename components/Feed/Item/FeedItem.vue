@@ -18,11 +18,11 @@ const onClick = () => {
 <template>
   <div class="flex flex-col">
     <button class="text-left cursor-pointer" @click="onClick">
-      <span class="text-zinc-800 dark:text-zinc-200 font-medium is-content">
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium" translatable="true">
         {{ props.entry.title }}
       </span>
     </button>
-    <div v-if="openContent === 'true'" class="my-2">
+    <div v-if="openContent === 'true'" class="my-2" translatable="true">
       <LazyFeedItemDetail :entry="props.entry"/>
     </div>
   </div>
