@@ -40,10 +40,6 @@ export const allowedCategories = [
 		value: "dev-to",
 	},
 	{
-		label: "Free Games",
-		value: "free-games",
-	},
-	{
 		label: "Magazine",
 		value: "magazine",
 	},
@@ -62,13 +58,5 @@ export const allowedCategories = [
 	{
 		label: "Software Updates",
 		value: "software-updates",
-	},
-	{
-		label: "Blogs",
-		value: "blogs",
-	},
-	{
-		label: "YouTube",
-		value: "youtube",
 	},
 ];
