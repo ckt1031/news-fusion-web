@@ -36,10 +36,6 @@ export const allowedCategories = [
 		value: "lobste-rs",
 	},
 	{
-		label: "Dev.to",
-		value: "dev-to",
-	},
-	{
 		label: "Magazine",
 		value: "magazine",
 	},
