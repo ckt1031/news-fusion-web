@@ -8,7 +8,7 @@ export const allowedCategories = [
 		value: "technology",
 	},
 	{
-		label: "Artificial Intelligence",
+		label: "AI",
 		value: "ai",
 	},
 	{
@@ -44,7 +44,7 @@ export const allowedCategories = [
 		value: "magazine",
 	},
 	{
-		label: "Technology Products",
+		label: "Tech Products",
 		value: "technology-products",
 	},
 	{
