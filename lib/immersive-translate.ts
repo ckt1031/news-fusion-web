@@ -6,12 +6,7 @@ export const immersiveTranslateConfig: Parameters<InitImmersiveTranslateOptions>
 			selectors: ['[translatable="true"]'],
 			excludeSelectors: ['[translatable="false"]'],
 			excludeTags: ["title"],
-			translationClasses: [
-				"border-l-2",
-				"border-blue-500",
-				"pl-2",
-				"font-translation",
-			],
+			translationClasses: ["font-translation"],
 		},
 	};
 
