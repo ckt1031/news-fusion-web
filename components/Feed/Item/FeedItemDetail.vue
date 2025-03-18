@@ -24,7 +24,7 @@ const markdownClass = clsx(
 	"markdown-code",
 	"prose prose-zinc dark:prose-invert",
 	"max-w-full",
-	"text-zinc-700 dark:text-zinc-300",
+	"text-zinc-600 dark:text-zinc-400",
 	markdownCodeClass,
 );
 </script>
@@ -33,7 +33,6 @@ const markdownClass = clsx(
 </style>
 
 <template>
-  <FeedDate :date-iso="props.entry.updated"/>
   <MDC
       :value="props.entry.content"
       :class="markdownClass"

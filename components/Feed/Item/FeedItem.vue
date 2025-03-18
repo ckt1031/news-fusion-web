@@ -17,11 +17,14 @@ const onClick = () => {
 
 <template>
   <div class="flex flex-col">
-    <button class="text-left cursor-pointer" @click="onClick">
-      <span class="text-zinc-800 dark:text-zinc-200 font-medium" translatable="true">
-        {{ props.entry.title }}
-      </span>
-    </button>
+    <div class="flex flex-row items-center justify-between gap-4">
+      <button class="text-left cursor-pointer" @click="onClick">
+        <span class="text-zinc-800 dark:text-zinc-200 font-medium" translatable="true">
+          {{ props.entry.title }}
+        </span>
+      </button>
+      <FeedDate :date-iso="props.entry.updated"/>
+    </div>
     <div v-if="openContent === 'true'" class="my-2" translatable="true">
       <LazyFeedItemDetail :entry="props.entry"/>
     </div>

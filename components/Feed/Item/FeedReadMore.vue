@@ -5,20 +5,16 @@ const props = defineProps<{
 </script>
 
 <template>
-  <UTooltip
-      :text="props.link.length < 50 ? props.link : props.link.slice(0, 50) + '...'"
-      translatable="false"
-  >
-    <UButton
-      label="Read More"
-      color="neutral"
-      variant="ghost"
-      class="cursor-pointer"
-      :href="props.link"
-      target="_blank"
-      icon="i-hugeicons-link-square-02"
-    />
-  </UTooltip>
+  <UButton
+    translatable="false"
+    label="Read More"
+    color="neutral"
+    variant="ghost"
+    class="cursor-pointer"
+    :href="props.link"
+    target="_blank"
+    icon="i-hugeicons-link-square-02"
+  />
 </template>
 
 <style scoped>

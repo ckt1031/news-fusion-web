@@ -7,7 +7,7 @@ const props = defineProps<{
 <template>
   <UTooltip text="Refresh Feed">
     <UButton
-        icon="i-hugeicons-arrow-reload-horizontal"
+        icon="i-hugeicons-reload"
         label="Reload"
         color="neutral"
         variant="outline"
