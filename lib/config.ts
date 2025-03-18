@@ -20,6 +20,10 @@ export const allowedCategories = [
 		value: "finance",
 	},
 	{
+		label: "Investing",
+		value: "investing",
+	},
+	{
 		label: "Developer",
 		value: "dev",
 	},
