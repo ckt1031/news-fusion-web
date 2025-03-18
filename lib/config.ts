@@ -20,10 +20,6 @@ export const allowedCategories = [
 		value: "finance",
 	},
 	{
-		label: "Investing",
-		value: "investing",
-	},
-	{
 		label: "Developer",
 		value: "dev",
 	},
@@ -34,10 +30,6 @@ export const allowedCategories = [
 	{
 		label: "Lobste.rs",
 		value: "lobste-rs",
-	},
-	{
-		label: "Magazine",
-		value: "magazine",
 	},
 	{
 		label: "Tech Products",
