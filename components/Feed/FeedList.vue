@@ -30,22 +30,22 @@ const result = computed(() => {
 <style scoped>
 @reference "tailwindcss";
 
-.state {
+.center-box {
   @apply flex gap-1.5 justify-center items-center h-32
 }
 </style>
 
 <template>
   <div class="my-3">
-    <div v-if="status === 'pending'" class="state">
+    <div v-if="status === 'pending'" class="center-box">
       <UIcon name="i-hugeicons-reload" class="w-5 h-5 animate-spin"/>
       Loading...
     </div>
-    <div v-else-if="status === 'error'" class="state">
+    <div v-else-if="status === 'error'" class="center-box">
       <UIcon name="i-hugeicons-bug-01" class="w-5 h-5"/>
       Error fetching data
     </div>
-    <div v-else-if="data && data.error" class="state">
+    <div v-else-if="data && data.error" class="center-box">
       <UIcon name="i-hugeicons-bug-01" class="w-5 h-5"/>
       {{ data.error }}
     </div>
@@ -72,13 +72,13 @@ const result = computed(() => {
           <FeedItem :entry="d"/>
         </div>
       </div>
-      <div v-else class="state">
+      <div v-else class="center-box">
         <UIcon name="i-hugeicons-search-remove" class="w-5 h-5"/>
         No search results
       </div>
     </div>
     <div v-else class="flex flex-col gap-3 items-center">
-      <div class="state">
+      <div class="center-box">
         <UIcon name="i-hugeicons-no-meeting-room" class="w-5 h-5"/>
         No news found
       </div>
