@@ -6,6 +6,7 @@ import {
 	getLocalTimeZone,
 } from "@internationalized/date";
 import dayjs from "dayjs";
+import type { DateRange } from "reka-ui";
 
 // Get query params
 const { params } = useRoute();
@@ -26,7 +27,13 @@ const modelValue = shallowRef(
 	new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate()),
 );
 
-const onDateChange = (newDate: DateValue) => {
+const onDateChange = (
+	newDate: DateRange | DateValue | DateValue[] | null | undefined,
+) => {
+	if (!newDate || "start" in newDate || Array.isArray(newDate)) {
+		return;
+	}
+
 	const nowDayJS = dayjs();
 	const newDateDayJS = dayjs(newDate.toDate(getLocalTimeZone()));
 
@@ -69,12 +76,12 @@ const onDateChange = (newDate: DateValue) => {
 
 <template>
 	<UPopover>
-	<UButton color="info" variant="subtle" icon="i-lucide-calendar">
-		{{ df.format(modelValue.toDate(getLocalTimeZone())) }}
-	</UButton>
+		<UButton color="info" variant="subtle" icon="i-lucide-calendar">
+			{{ df.format(modelValue.toDate(getLocalTimeZone())) }}
+		</UButton>
 
-	<template #content>
-		<UCalendar v-model="modelValue" class="p-2" @update:modelValue="onDateChange" />
-	</template>
+		<template #content>
+			<UCalendar v-model="modelValue" class="p-2" @update:modelValue="onDateChange" />
+		</template>
 	</UPopover>
 </template>
