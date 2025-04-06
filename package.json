@@ -49,7 +49,7 @@
 		"rehype-external-links": "^3.0.0",
 		"tailwindcss": "^4.0.13",
 		"vue-tsc": "^2.2.8",
-		"wrangler": "^3.114.1"
+		"wrangler": "^4.7.2"
 	},
 	"overrides": {
 		"tinyglobby": "0.2.12",
