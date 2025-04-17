@@ -31,24 +31,4 @@ export const allowedCategories = [
 		label: "Hacker News",
 		value: "hacker-news",
 	},
-	{
-		label: "Lobste.rs",
-		value: "lobste-rs",
-	},
-	{
-		label: "Tech Products",
-		value: "technology-products",
-	},
-	{
-		label: "Software",
-		value: "software",
-	},
-	{
-		label: "Programming Updates",
-		value: "programming-updates",
-	},
-	{
-		label: "Software Updates",
-		value: "software-updates",
-	},
 ];
