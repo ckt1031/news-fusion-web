@@ -27,8 +27,4 @@ export const allowedCategories = [
 		label: "Developer",
 		value: "dev",
 	},
-	{
-		label: "Hacker News",
-		value: "hacker-news",
-	},
 ];
