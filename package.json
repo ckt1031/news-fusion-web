@@ -21,7 +21,7 @@
 		"fast-xml-parser": "^5.2.0",
 		"fuse.js": "^7.1.0",
 		"get-youtube-id": "^1.0.1",
-		"nuxt": "^3.16.2",
+		"nuxt": "^3.17.1",
 		"nuxt-easy-lightbox": "1.0.2",
 		"ofetch": "^1.4.1",
 		"s-ago": "^2.2.0",
