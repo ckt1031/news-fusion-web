@@ -1,5 +1,7 @@
 # News Fusion Web
 
+> **⚠️ Depreciation Notice: This project is merged into https://github.com/ckt1031/news-fusion and no longer updating.**
+
 Web version of News Fusion, aimed to combine the news from different sources and provide a better experience for the users powered by LLM and Embeddings models.
 
 Screenshots of the web version:
